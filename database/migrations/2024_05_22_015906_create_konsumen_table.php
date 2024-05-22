@@ -14,11 +14,11 @@ class CreateKonsumenTable extends Migration
     public function up()
     {
         Schema::create('konsumen', function (Blueprint $table) {
-            $table->id_konsumen();
-            $table->varchar('nama_konsumen', 20);
-            $table->text('alamat', 200);
-            $table->varchar('no_telepon', 20);
-            $table->date('terakhir_pembelian', 20);
+            $table->id();
+            $table->string('nama_konsumen', 20);
+            $table->text('alamat');
+            $table->string('no_telepon', 20);
+            $table->date('terakhir_pembelian');
             $table->timestamps();
         });
     }
