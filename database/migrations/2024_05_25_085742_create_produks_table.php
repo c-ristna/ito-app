@@ -17,7 +17,7 @@ class CreateProduksTable extends Migration
             $table->id();
             $table->string('nama_produk', 20);
             $table->decimal('harga', 20);
-            $table->integer('stok', 3);
+            $table->integer('stok')->unsigned();
             $table->text('deskripsi');
             $table->string('status_produk', 20);
             $table->timestamps();
