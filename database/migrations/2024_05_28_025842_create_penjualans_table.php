@@ -21,9 +21,10 @@ class CreatePenjualansTable extends Migration
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
             $table->timestamps();
+
             // Define foreign keys
-            $table->foreignId('konsumen_id')->constrained('konsumen');
-            $table->foreignId('produk_id')->constrained('produk');
+            $table->foreignId('produk_id')->constrained('produks'); // Note the plural form 'produks'
+            $table->foreignId('konsumen_id')->constrained('konsumen'); // Note the plural form 'konsumens'
         });
     }
 
