@@ -9,10 +9,10 @@ class Admin extends Model
 {
     use HasFactory;
 
-    public $tabel = 'produk';
+    public $tabel = 'produks';
 
     const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated-at';
+    const UPDATED_AT = 'updated_at';
     protected $auditTimestamps = true;
 
     public $fillable = [

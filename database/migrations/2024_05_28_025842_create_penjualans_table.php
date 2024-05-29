@@ -20,11 +20,13 @@ class CreatePenjualansTable extends Migration
             $table->decimal('total_harga', 20);
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
+            $table->unsignedBigInteger('konsumen_id');
+            $table->unsignedBigInteger('produks_id');
             $table->timestamps();
 
             // Define foreign keys
-            $table->foreignId('produk_id')->constrained('produks');
-            $table->foreignId('konsumen_id')->constrained('konsumen');
+            $table->foreign('konsumen_id')->references('id')->on('konsumen');
+            $table->foreign('produks_id')->references('id')->on('produks');
         });
     }
 
@@ -37,8 +39,5 @@ class CreatePenjualansTable extends Migration
     {
         Schema::dropIfExists('penjualans');
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d3bfef9df5cb743a09317e2c018b44b144648501
+
