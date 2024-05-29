@@ -37,4 +37,8 @@ class CreatePenjualansTable extends Migration
     {
         Schema::dropIfExists('penjualans');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d3bfef9df5cb743a09317e2c018b44b144648501
