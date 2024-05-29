@@ -20,8 +20,11 @@ class CreatePenjualansTable extends Migration
             $table->decimal('total_harga', 20);
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
+           
             $table->timestamps();
+
             // Define foreign keys
+
             $table->foreignId('id_produk')->references('id')->on('produk');
             $table->foreignId('id_konsumen')->references('id')->on('konsumen');
         });
