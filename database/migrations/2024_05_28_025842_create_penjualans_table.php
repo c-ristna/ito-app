@@ -22,8 +22,8 @@ class CreatePenjualansTable extends Migration
             $table->string('status_penjualan', 20);
             $table->timestamps();
             // Define foreign keys
-            $table->foreignId('konsumen_id')->constrained('konsumen');
-            $table->foreignId('produk_id')->constrained('produk');
+            $table->foreignId('id_produk')->references('id')->on('produk');
+            $table->foreignId('id_konsumen')->references('id')->on('konsumen');
         });
     }
 
