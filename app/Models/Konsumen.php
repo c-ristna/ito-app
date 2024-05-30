@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Konsumen extends Model
 {
     use HasFactory;
+    public $tabel = 'konsumens';
     const CREATED_AT = 'created_at';
     const UPDATE_AT = 'updated_at';
 
