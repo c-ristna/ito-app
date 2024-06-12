@@ -17,7 +17,7 @@ class CreateKonsumensTable extends Migration
             $table->id();
             $table->string('nama_konsumen', 20);
             $table->text('alamat');
-            $table->string('no_telepon', 20);
+            $table->bigInteger('no_telepon');
             $table->date('terakhir_pembelian');
             $table->timestamps();
         });

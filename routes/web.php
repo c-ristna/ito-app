@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\KonsumenController;
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\AdminController;
+//use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +20,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/produk', function () {
+//Route::get('/produk', function () {
+//});
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware('auth');
+
+// Login
+// Route::get('/login', [AuthController::class, 'index'])->name('login');
+// Route::post('post-login', [AuthController::class, 'postLogin']);
+
+// // Logout
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('home', function (){
+    return view ('home');
 });
 
+Route::resource('/produk', ProdukController::class);
+Route::get('/penjualan', PenjualanController::class);
+
+//Route::get('homecontroller', 'HomeController@data');
+Route::get('/login', [AdminController::class, 'login']);
+Route::post('/login', [AdminController::class, 'loginStore'])->name('loginStore');
+Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+//Route::get('login', 'LoginController@data');
+
+Route::get('/konsumen', [KonsumenController::class, 'index'])->name('konsumen');
+Route::get('/keuangan', [KeuanganController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index']);
 
