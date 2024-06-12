@@ -22,6 +22,5 @@ class Keuangan extends Model
         'pengeluaran',
         'saldo',
         'total',
-        'penjualan_id',
     ];
 }

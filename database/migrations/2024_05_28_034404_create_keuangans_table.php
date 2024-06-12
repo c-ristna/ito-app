@@ -20,9 +20,10 @@ class CreateKeuangansTable extends Migration
             $table->decimal('pengeluaran', 20);
             $table->decimal('saldo', 20);
             $table->decimal('total', 20);
+            
             $table->timestamps();
 
-            $table->foreignId('penjualan_id')->constrained('penjualan');
+            $table->foreignId('id_penjualans')->references('id')->on('penjualans');
         });
     }
 
