@@ -36,12 +36,12 @@ use App\Http\Controllers\AdminController;
 // // Logout
 // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', function (){
+Route::get('dashboard', function () {
+    return view ('dashboard');
+});
+Route::get('home', function () {
     return view ('home');
 });
-
-Route::resource('/produk', ProdukController::class);
-Route::get('/penjualan', PenjualanController::class);
 
 //Route::get('homecontroller', 'HomeController@data');
 Route::get('/login', [AdminController::class, 'login']);
@@ -49,7 +49,11 @@ Route::post('/login', [AdminController::class, 'loginStore'])->name('loginStore'
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 //Route::get('login', 'LoginController@data');
 
-Route::get('/konsumen', [KonsumenController::class, 'index'])->name('konsumen');
-Route::get('/keuangan', [KeuanganController::class, 'index']);
-Route::get('/admin', [AdminController::class, 'index']);
 
+Route::resource('/konsumen', KonsumenController::class);
+
+
+Route::resource('/keuangan', KeuanganController::class);
+Route::resource('/produk', ProdukController::class);
+Route::resource('/penjualan', PenjualanController::class);
+Route::resource('/admin', AdminController::class);

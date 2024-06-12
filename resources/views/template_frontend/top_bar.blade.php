@@ -12,6 +12,6 @@
                 </div>
 
                 <div class="user">
-                    <img src="../assets/imgs/crstn.jpg" alt="">
+                    <img src="{{ asset('assets/imgs/crstn.jpg')  }}" alt="">
                 </div>
             </div>
