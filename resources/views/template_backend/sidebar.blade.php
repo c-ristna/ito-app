@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('dashboard') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('component/konsumen/dataKonsumen') }}">
+                    <a href="{{ url('/konsumen') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -29,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('component/keuangan/dataKeuangan') }}">
+                    <a href="{{ url('/keuangan') }}">
                         <span class="icon">
                             <ion-icon name="cash-outline"></ion-icon>
                         </span>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('component/produk/dataKProduk') }}">
+                    <a href="{{ url('/produk') }}">
                         <span class="icon">
                             <ion-icon name="bag-handle-outline"></ion-icon>
                         </span>
@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('component/penjualan/dataPenjualan') }}">
+                    <a href="{{ url('/penjualan') }}">
                         <span class="icon">
                             <ion-icon name="analytics-outline"></ion-icon>
                         </span>
@@ -56,7 +56,7 @@
                 </li>
 
                 <li>
-                <a href="{{ url('component/admin/dataAdmin') }}">
+                <a href="{{ url('/admin') }}">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>

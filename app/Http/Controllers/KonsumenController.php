@@ -18,7 +18,7 @@ class KonsumenController extends Controller
     }
     public function create() //buat nampilin form nambah datanya
     {
-        return view('component/konsumen/add');
+        return view('component/konsumen/create');
     }
 
     public function edit(){
@@ -31,11 +31,10 @@ class KonsumenController extends Controller
     public function store(Request $request) //buat simpan data
     {
         Konsumen::create([
-            'nama_konsumen' => $request->nama_konsumen,
-            'alamat' => $request->alamat,
-            'no_telepon' => $request->no_telepon,
-            'terakhir_pembelian' => $request->terakhir_pembelian,
-            'alamat' => $request->alamat,
+            'nama_konsumen'         => $request->nama_konsumen,
+            'alamat'                => $request->alamat,
+            'no_telepon'            => $request->no_telepon,
+            'terakhir_pembelian'    => $request->terakhir_pembelian,
         ]);
         return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
     }

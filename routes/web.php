@@ -37,9 +37,9 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view ('dashboard');
 });
-Route::get('home', function () {
-    return view ('home');
-});
+// Route::get('home', function () {
+//     return view ('home');
+// });
 
 // Route::get('/component/konsumen/dataKonsumen', [App\Http\Controllers\KonsumenController::class,'data'])->name('dataKonsumen');
 // Route::get('/konsumen/create', [KonsumenController::class, 'data']);
