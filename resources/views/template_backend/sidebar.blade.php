@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href="../index.php">
+                    <a href="{{ url('/') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="../konsumen/konsumen.php">
+                    <a href="{{ url('component/konsumen/dataKonsumen') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -29,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="../keuangan/keuangan.php">
+                    <a href="{{ url('component/keuangan/dataKeuangan') }}">
                         <span class="icon">
                             <ion-icon name="cash-outline"></ion-icon>
                         </span>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li>
-                    <a href="../produk/produk.php">
+                    <a href="{{ url('component/produk/dataKProduk') }}">
                         <span class="icon">
                             <ion-icon name="bag-handle-outline"></ion-icon>
                         </span>
@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="../penjualan/penjualan.php">
+                    <a href="{{ url('component/penjualan/dataPenjualan') }}">
                         <span class="icon">
                             <ion-icon name="analytics-outline"></ion-icon>
                         </span>
@@ -56,7 +56,7 @@
                 </li>
 
                 <li>
-                <a href="../admin/admin.php">
+                <a href="{{ url('component/admin/dataAdmin') }}">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
@@ -65,7 +65,7 @@
                 </li>
 
                 <li>
-                    <a href="../login/login.php">
+                    <a href="{{ url('login') }}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>

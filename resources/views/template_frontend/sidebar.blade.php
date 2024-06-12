@@ -1,17 +1,16 @@
 <div class="container">
-        <div class="navigation">
-            <ul>
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#Bar">
+                    <span class="icon">
+                        <ion-icon name="content"></ion-icon>
+                    </span>
+                    <span class="title">Ini Tuh Oenak Dashboard</span>
+                </a>
+            </li>
                 <li>
-                    <a href="#Bar">
-                        <span class="icon">
-                            <ion-icon name="content"></ion-icon>
-                        </span>
-                        <span class="title">Ini Tuh Oenak Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="index.php">
+                    <a href="{{ url('dashboard') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -20,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="konsumen/konsumen.php">
+                    <a href="{{ url('/konsumen') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -29,7 +28,7 @@
                 </li>
 
                 <li>
-                    <a href="keuangan/keuangan.php">
+                    <a href="{{ url('/keuangan') }}">
                         <span class="icon">
                             <ion-icon name="cash-outline"></ion-icon>
                         </span>
@@ -38,7 +37,7 @@
                 </li>
 
                 <li>
-                    <a href="produk/produk.php">
+                    <a href="{{ url('/produk') }}">
                         <span class="icon">
                             <ion-icon name="bag-handle-outline"></ion-icon>
                         </span>
@@ -47,7 +46,7 @@
                 </li>
 
                 <li>
-                    <a href="penjualan/penjualan.php">
+                    <a href="{{ url('/penjualan') }}">
                         <span class="icon">
                             <ion-icon name="analytics-outline"></ion-icon>
                         </span>
@@ -56,7 +55,7 @@
                 </li>
 
                 <li>
-                <a href="admin/admin.php">
+                    <a href="{{ url('/admin') }}">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
@@ -65,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="login/login.php">
+                    <a href="{{ url('login') }}">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>

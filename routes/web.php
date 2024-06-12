@@ -34,11 +34,22 @@ Route::get('/', function () {
 // // Logout
 // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', function (){
+Route::get('dashboard', function () {
+    return view ('dashboard');
+});
+Route::get('home', function () {
     return view ('home');
 });
-Route::get('/konsumen', [KonsumenController::class, 'index'])->name('konsumen');
-Route::get('/keuangan', [KeuanganController::class, 'index']);
-Route::get('/produk', [ProdukController::class, 'index']);
-Route::get('/penjualan', [PenjualanController::class, 'index']);
-Route::get('/admin', [AdminController::class, 'index']);
+
+// Route::get('/component/konsumen/dataKonsumen', [App\Http\Controllers\KonsumenController::class,'data'])->name('dataKonsumen');
+// Route::get('/konsumen/create', [KonsumenController::class, 'data']);
+// Route::get('konsumen/add', 'KonsumenController@add');
+// Route::post('konsumen', 'KonsumenController@addProcess');
+
+Route::resource('/konsumen', KonsumenController::class);
+
+
+Route::resource('/keuangan', KeuanganController::class);
+Route::resource('/produk', ProdukController::class);
+Route::resource('/penjualan', PenjualanController::class);
+Route::resource('/admin', AdminController::class);

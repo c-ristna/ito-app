@@ -10,9 +10,6 @@
     width: 500px;
     margin: 30px auto;
     position: relative;
-    /* overflow: auto;
-    display: grid; */
-    /* min-height: 700px; */
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -43,7 +40,7 @@ input[type="date"] {
 }
 
 .button-container [type="submit"] {
-    margin-top: 10px;
+    margin-top: 20px;
     cursor: pointer;
     padding: 5px;
 }

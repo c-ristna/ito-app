@@ -20,7 +20,7 @@ class KonsumenSeeder extends Seeder
                 'nama_konsumen' => 'Cristina',
                 'alamat' => 'Jungkat',
                 'no_telepon' => '0812121212',
-                'terakhir_pembelian' => '2024-06-30', // Use ISO 8601 format for dates
+                'terakhir_pembelian' => '2024-06-30', 
             ],
         ]);
     }
