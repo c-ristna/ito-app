@@ -13,7 +13,7 @@ class CreateProduksTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk', function (Blueprint $table) {
+        Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_produk', 20);
             $table->decimal('harga', 20);

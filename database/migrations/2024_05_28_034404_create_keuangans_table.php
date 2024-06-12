@@ -23,7 +23,11 @@ class CreateKeuangansTable extends Migration
             
             $table->timestamps();
 
+<<<<<<< HEAD
             $table->foreignId('id_penjualans')->references('id')->on('penjualans');
+=======
+           // $table->foreignId('penjualan_id')->constrained('penjualan');
+>>>>>>> 66f4414ba9394b9ad259b9dc73dbd633e5e3b42f
         });
     }
 
