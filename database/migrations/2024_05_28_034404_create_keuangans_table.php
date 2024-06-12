@@ -22,7 +22,7 @@ class CreateKeuangansTable extends Migration
             $table->decimal('total', 20);
             $table->timestamps();
 
-            $table->foreignId('penjualan_id')->constrained('penjualan');
+           // $table->foreignId('penjualan_id')->constrained('penjualan');
         });
     }
 

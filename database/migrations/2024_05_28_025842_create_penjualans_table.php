@@ -20,11 +20,13 @@ class CreatePenjualansTable extends Migration
             $table->decimal('total_harga', 20);
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
+            $table->unsignedBigInteger('konsumens_id');
+            $table->unsignedBigInteger('produks_id');
             $table->timestamps();
 
             // Define foreign keys
-            $table->foreignId('produk_id')->constrained('produks'); // Note the plural form 'produks'
-            $table->foreignId('konsumen_id')->constrained('konsumen'); // Note the plural form 'konsumens'
+            $table->foreign('konsumens_id')->references('id')->on('konsumens');
+            $table->foreign('produks_id')->references('id')->on('produks');
         });
     }
 
