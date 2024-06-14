@@ -39,9 +39,9 @@ use App\Http\Controllers\LoginController;
 Route::get('dashboard', function () {
     return view ('dashboard');
 });
-Route::get('home', function () {
-    return view ('home');
-});
+// Route::get('home', function () {
+//     return view ('home');
+// });
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'loginStore']);

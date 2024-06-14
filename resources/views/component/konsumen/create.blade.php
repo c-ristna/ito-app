@@ -1,3 +1,14 @@
+@extends('template_backend.home')
+
+@section('halaman', 'Tambah Data')
+
+@section('content')
+  @if (Session::has('success'))
+    <div class="alert alert-success" role="alert">
+      {{ Session('success') }}
+    </div>
+  @endif
+
 <!doctype html>
 <html lang="en">
   <head>

@@ -1,4 +1,4 @@
-@extends('home')
+@extends('template_backend.home')
 
 @section('title', 'Dashboard ITO')
 
@@ -18,7 +18,12 @@
     <script src="https://kit.fontawesome.com/df60d5ae41.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    @section('content')
+  @section('content')
+    @if (Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        {{ Session('success') }}
+      </div>
+    @endif
           <div class="customer"></div>
             <h2 class="main--title">Data Konsumen</h2>
               <div class="tabular--wrapper">
