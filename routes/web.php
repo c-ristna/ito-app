@@ -6,7 +6,7 @@ use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 //use App\Http\Controllers\HomeController;
 
 /*
@@ -43,11 +43,9 @@ Route::get('home', function () {
     return view ('home');
 });
 
-//Route::get('homecontroller', 'HomeController@data');
-Route::get('/login', [AdminController::class, 'login']);
-Route::post('/login', [AdminController::class, 'loginStore'])->name('loginStore');
-Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
-//Route::get('login', 'LoginController@data');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'loginStore']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::resource('/konsumen', KonsumenController::class);
@@ -56,4 +54,3 @@ Route::resource('/konsumen', KonsumenController::class);
 Route::resource('/keuangan', KeuanganController::class);
 Route::resource('/produk', ProdukController::class);
 Route::resource('/penjualan', PenjualanController::class);
-Route::resource('/admin', AdminController::class);
