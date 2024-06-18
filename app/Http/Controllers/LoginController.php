@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class LoginController extends Controller
 {
+    //
     public function login()
     {
         return view('auth.login');
@@ -14,26 +17,23 @@ class AdminController extends Controller
     public function loginStore(Request $request)
     {
         $data = $request->validate([
-            'nama_admin' => 'required|max:225',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
+        $admin = DB::table('admins')->where('email', $data['email'])->first();
 
-        if(Auth::attempt($data)){
+        if ($admin && password_verify($data['password'], $admin->password)) {
+            // Autentikasi berhasil
             $request->session()->regenerate();
-
-            return redirect()->route('home');
+            return redirect()->intended('dashboard');
         }
         return back()->with('error', 'email atau password salah!');
     }
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
-        return redirect()->route('login');
+        return redirect('/login');
     }
 }
