@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Konsumen</title>
+    <title>@yield('title') - Produk</title>
     
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{asset('assets/css/tabel.css')}}">
@@ -25,11 +25,11 @@
       </div>
     @endif
           <div class="customer"></div>
-            <h2 class="main--title">Data Konsumen</h2>
+            <h2 class="main--title">Data Produk</h2>
               <div class="tabular--wrapper">
                 <div class="row-button">
                   <ul class="left">
-                      <a class= "tambah" name="tambah" href="{{ url('/konsumen/create') }}">
+                      <a class= "tambah" name="tambah" href="{{ url('/produk/create') }}">
                         <i class="fa fa-plus"></i> Tambah
                       </a>
                   </ul>
@@ -39,34 +39,34 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kode Konsumen</th>
-                    <th scope="col">Nama Konsumen</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">No Telepon</th>
-                    <th scope="col">Terakhir Pembelian</th>
+                    <th scope="col">Kode Produk</th>
+                    <th scope="col">Nama Produk</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Stok</th>
+                    <th scope="col">Deskripsi</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-              @foreach ($konsumen as $key => $item )
+              @foreach ($produk as $key => $item )
                 <tr>
                   <th scope="row">{{ ++$key }}</th>
-                  <td>{{ $item->kode_konsumen }}</td>
-                  <td>{{ $item->nama_konsumen }}</td>
-                  <td>{{ $item->alamat }}</td>
-                  <td>{{ $item->no_telepon }}</td>
-                  <td>{{ $item->terakhir_pembelian }}</td>
+                  <td>{{ $item->kode_produk }}</td>
+                  <td>{{ $item->nama_produk }}</td>
+                  <td>{{ $item->harga }}</td>
+                  <td>{{ $item->stok }}</td>
+                  <td>{{ $item->deskripsi }}</td>
+                  <td>{{ $item->status }}</td>
                   <td class="button-container"> 
-                      <button>
-                        <a href="{{ url('/konsumen/edit') . $item->id }}">
-                          <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                      </button>
-                      <button>
-                      <a href="{{ url('/konsumen/destroy') . $item->id }}">
-                          <i class="fa-solid fa-trash"></i>
-                      </button>
-                    </form>
+                    <button>
+                      <a href="{{ url('/produk/edit/') . $item->id }}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </a>
+                    </button>
+                    <button>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                   </td> 
                 </tr>   
               @endforeach

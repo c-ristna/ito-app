@@ -7,7 +7,8 @@
     <title>Dashboard ITO</title>
     
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/tabel.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/data.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
      <!-- ======= Fonts ====== -->
     <script src="https://kit.fontawesome.com/df60d5ae41.js" crossorigin="anonymous"></script>
@@ -15,9 +16,7 @@
 <body>
     
     <!-- =============== Navigation Dashboard Utama ================ -->
-    @include ('template_frontend.sidebar')
-    <!-- ========================= Main ==================== -->
-    @include ('template_frontend.top_bar')
+    @include ('template_backend.sidebar')
     
     @yield('content')
 
