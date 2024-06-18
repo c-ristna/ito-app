@@ -24,7 +24,7 @@ class AdminController extends Controller
 
             return redirect()->route('home');
         }
-        return back()->with('error', 'email atau password salah!');
+        return back()->with('error', 'Email atau password salah!');
     }
     public function logout(Request $request)
     {

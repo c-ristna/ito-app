@@ -10,25 +10,18 @@ use App\Models\Konsumen;
 class KonsumenController extends Controller
 {
     //
-    public function index() //halaman tabel
+    public function index()
     {
         $konsumen = Konsumen::all();
-        // return $konsumen;
-        return view('component/konsumen/dataKonsumen')->with('konsumen', $konsumen);
+        return view('component/konsumen/dataKonsumen', ['konsumen' => $konsumen]);
     }
-    public function create() //buat nampilin form nambah datanya
+
+    public function create()
     {
         return view('component/konsumen/create');
     }
 
-    public function edit(){
-
-    }
-
-    public function destroy($id, Request $request){
-
-    }
-    public function store(Request $request) //buat simpan data
+    public function store(Request $request)
     {
         Konsumen::create([
             'nama_konsumen'         => $request->nama_konsumen,
@@ -38,7 +31,24 @@ class KonsumenController extends Controller
         ]);
         return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
     }
-    function detail(){
 
+    public function edit($id)
+    {
+        // code for editing the data
+    }
+
+    public function update(Request $request, $id)
+    {
+        // code for updating the data
+    }
+
+    public function destroy($id)
+    {
+        // code for deleting the data
+    }
+
+    public function detail($id)
+    {
+        // code for showing the detail
     }
 }

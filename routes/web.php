@@ -20,22 +20,6 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-//Route::get('/produk', function () {
-//});
-
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// })->middleware('auth');
-
-// Login
-// Route::get('/login', [AuthController::class, 'index'])->name('login');
-// Route::post('post-login', [AuthController::class, 'postLogin']);
-
-// // Logout
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::get('dashboard', function () {
     return view ('dashboard');
 });
