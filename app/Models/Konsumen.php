@@ -15,7 +15,7 @@ class Konsumen extends Model
     protected $auditTimestampt = true;
 
     public $fillable = [
-        'id',
+        'kode_konsumen',
         'nama_konsumen',
         'alamat',
         'no_telepon',

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ProdukSeeder extends Seeder
 {
@@ -14,14 +13,14 @@ class ProdukSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('produks')->insert([
             [
-                'nama_produk' => 'Puding',
-                'harga' => '10.000',
+                'kode_produk' => 'IP001',
+                'nama_produk' => 'Pudding',
+                'harga' => 'Rp. 5.000',
                 'stok' => '20',
-                'deskripsi' => 'Dessert', 
-                'status_produk' => 'Sisa 4',
+                'deskripsi' => 'Tersedia rasa cokelat, taro, dan strawberry', 
+                'status' => 'Sisa 3 rasa taro', 
             ],
         ]);
     }

@@ -20,6 +20,15 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+//Route::get('/produk', function () {
+//});
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware('auth');
+
 Route::get('dashboard', function () {
     return view ('dashboard');
 });
@@ -33,8 +42,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::resource('/konsumen', KonsumenController::class);
-
-
 Route::resource('/keuangan', KeuanganController::class);
 Route::resource('/produk', ProdukController::class);
 Route::resource('/penjualan', PenjualanController::class);

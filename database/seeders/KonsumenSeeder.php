@@ -17,6 +17,7 @@ class KonsumenSeeder extends Seeder
         // Insert data into 'konsumens' table
         DB::table('konsumens')->insert([
             [
+                'kode_konsumen' => 'ID001',
                 'nama_konsumen' => 'Cristina',
                 'alamat' => 'Jungkat',
                 'no_telepon' => '0812121212',

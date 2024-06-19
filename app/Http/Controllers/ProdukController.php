@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Produk;
 
 class ProdukController extends Controller
 {
     //
-     //public function data(){
-         //$produk = DB::table('produks')->get();
-         //return view('component/produk/dataProduk', ['produk' => $produk]);
-     //}
-
     public function index() //halaman tabel
     {
         $produk = Produk::all();
@@ -20,25 +17,34 @@ class ProdukController extends Controller
     }
     public function create() //buat nampilin form nambah datanya
     {
-        return view('component/produk/add');
+        return view('component/produk/create');
     }
 
-    public function edit(){
+    public function show($id)
+    {
+   //
+    }
+    public function edit($id)
+    {
+        $produk = Produk::all();
+        return view('component/produk/edit')->with('produk', $produk);
     }
 
-    public function destroy($id, Request $request){
-
+    public function destroy($id, Request $request)
+    {
+        //
     }
     public function store(Request $request) //buat simpan data
     {
         Produk::create([
-            'nama_produk' => $request->nama_produk,
-            'harga' => $request->harga,
-            'stok' => $request->stok,
-            'deskripsi' => $request->deskripsi,
-            'status_produk' => $request->status_produk,
+            'kode_produk'        => $request->kode_produk,
+            'nama_produk'        => $request->nama_produk,
+            'harga'              => $request->harga,
+            'stok'               => $request->stok,
+            'deskripsi'          => $request->deskripsi,
+            'status'             => $request->status,
         ]);
-            return redirect('produk')->with('status', 'Data Produk Berhasil ditambahkan!');
+        return redirect('produk')->with('status', 'Data Produk Berhasil ditambahkan!');
     }
     function detail(){
 

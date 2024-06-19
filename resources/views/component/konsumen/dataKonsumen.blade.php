@@ -39,7 +39,7 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">ID Konsumen</th>
+                    <th scope="col">Kode Konsumen</th>
                     <th scope="col">Nama Konsumen</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">No Telepon</th>
@@ -51,18 +51,22 @@
               @foreach ($konsumen as $key => $item )
                 <tr>
                   <th scope="row">{{ ++$key }}</th>
-                  <td>{{ $item->id }}</td>
+                  <td>{{ $item->kode_konsumen }}</td>
                   <td>{{ $item->nama_konsumen }}</td>
                   <td>{{ $item->alamat }}</td>
                   <td>{{ $item->no_telepon }}</td>
                   <td>{{ $item->terakhir_pembelian }}</td>
-                  <td> 
+                  <td class="button-container"> 
                       <button>
+                        <a href="{{ url('/konsumen/edit') . $item->id }}">
                           <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
                       </button>
                       <button>
+                      <a href="{{ url('/konsumen/destroy') . $item->id }}">
                           <i class="fa-solid fa-trash"></i>
                       </button>
+                    </form>
                   </td> 
                 </tr>   
               @endforeach

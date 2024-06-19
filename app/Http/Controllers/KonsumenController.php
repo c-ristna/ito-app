@@ -10,45 +10,67 @@ use App\Models\Konsumen;
 class KonsumenController extends Controller
 {
     //
-    public function index()
+    public function index() //halaman tabel
     {
         $konsumen = Konsumen::all();
-        return view('component/konsumen/dataKonsumen', ['konsumen' => $konsumen]);
+        // return $konsumen;
+        return view('component/konsumen/dataKonsumen')->with('konsumen', $konsumen);
     }
-
-    public function create()
+    public function create() //buat nampilin form nambah datanya
     {
         return view('component/konsumen/create');
     }
 
-    public function store(Request $request)
+    public function show($id)
     {
-        Konsumen::create([
-            'nama_konsumen'         => $request->nama_konsumen,
-            'alamat'                => $request->alamat,
-            'no_telepon'            => $request->no_telepon,
-            'terakhir_pembelian'    => $request->terakhir_pembelian,
-        ]);
-        return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
+   //
     }
-
     public function edit($id)
     {
-        // code for editing the data
+        $konsumen = Konsumen::findorfail($id);
+        return view('component/konsumen/edit', compact('konsumen'));
     }
+    public function store(Request $request) //buat simpan data
+    {
+      Konsumen::create([
+        'kode_konsumen'         => $request->kode_konsumen,
+        'nama_konsumen'         => $request->nama_konsumen,
+        'alamat'                => $request->alamat,
+        'no_telepon'            => $request->no_telepon,
+        'terakhir_pembelian'    => $request->terakhir_pembelian,
+      ]);
+      return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
+      }
 
     public function update(Request $request, $id)
     {
-        // code for updating the data
+      $this->validate($request, [
+        'name' => 'required|min:3'
+      ]);
+
+      $konsumen_data = [
+        'nama_konsumen' => $request->nama_konsumen,
+      ];
+
+      Konsumen::whereId($id)->update($konsumen_data);
+
+      return redirect()->route('konsumen/dataKonsumen')->with('success', 'Data Konsumen Berhasil Diupdate');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id, Request $request)
     {
-        // code for deleting the data
-    }
+        $konsumen = Konsumen::findorfail($id);
+        $konsumen->delete();
 
-    public function detail($id)
-    {
-        // code for showing the detail
+        return redirect()->back()->with('success', 'Data Konsumen Berhasil Dihapus');
+    }
+    function detail(){
+
     }
 }

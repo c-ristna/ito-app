@@ -1,4 +1,4 @@
-@extends('template_backend.home')
+@extends('template_backend.home2')
 
 @section('halaman', 'Tambah Data')
 
@@ -26,8 +26,8 @@
             <section class="base">
                 <div class="form"></div>
                     <div>
-                        <label for="id_konsumen">ID Konsumen</label>
-                        <input type="text" id="form-control" name="id_konsumen" autofocus="" required=""
+                        <label for="kode_konsumen">Kode Konsumen</label>
+                        <input type="text" id="form-control" name="kode_konsumen" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
