@@ -15,12 +15,12 @@ class CreateProduksTable extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_produk')->nullable();
+            $table->string('kode_produk')->unique(); // Membuat kode produk unik dan tidak nullable
             $table->string('nama_produk')->nullable();
-            $table->decimal('harga')->nullable();
-            $table->integer('stok')->unsigned();
+            $table->decimal('harga', 15, 2)->nullable(); // Menyesuaikan format harga dengan presisi yang lebih baik
+            $table->integer('stok')->unsigned()->default(0); // Menetapkan nilai default untuk stok
             $table->text('deskripsi')->nullable();
-            $table->string('status_produk')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

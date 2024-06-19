@@ -1,5 +1,3 @@
-@extends('template_backend.home2')
-
 @section('halaman', 'Tambah Data')
 
 @section('content')
@@ -39,7 +37,7 @@
                         <input type="text" id="form-control" name="password" required="" placeholder="Ketik disini" />
                     </div>
                         <div class="button-container">
-                            <button type="submit" class="btn btn-secondary">Kembali</button>
+                            <button type="cancel" class="btn btn-secondary">Kembali</button>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </div>

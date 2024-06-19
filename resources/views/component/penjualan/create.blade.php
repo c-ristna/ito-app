@@ -52,7 +52,7 @@
                         <input type="text" id="form-control" name="status" required="" placeholder="Ketik disini" /> 
                     </div>
                         <div class="button-container">
-                            <button type="submit" class="btn btn-secondary">Kembali</button>
+                            <button type="cancel" class="btn btn-secondary">Kembali</button>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </div>

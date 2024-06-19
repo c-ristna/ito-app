@@ -21,6 +21,6 @@ class Produk extends Model
         'harga',
         'stok',
         'deskripsi',
-        'status_produk'
+        'status'
     ];
 }
