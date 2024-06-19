@@ -17,10 +17,11 @@ class Produk extends Model
 
     public $fillable = [
         'id',
+        'kode_produk',
         'nama_produk',
         'harga',
         'stok',
         'deskripsi',
-        'status_produk'
+        'status'
     ];
 }

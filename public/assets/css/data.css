@@ -44,3 +44,9 @@ input[type="date"] {
     cursor: pointer;
     padding: 5px;
 }
+
+.button-container [type="cancel"] {
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 5px;
+}

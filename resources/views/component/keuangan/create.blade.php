@@ -48,7 +48,7 @@
                         <input type="date" id="form-control" name="terakhir_pembelian" required="" /> <br>
                     </div>
                         <div class="button-container">
-                            <button type="submit" class="btn btn-secondary">Kembali</button>
+                            <button type="cancel" class="btn btn-secondary">Kembali</button>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </div>

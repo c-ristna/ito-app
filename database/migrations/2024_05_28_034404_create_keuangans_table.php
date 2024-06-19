@@ -17,13 +17,13 @@ class CreateKeuangansTable extends Migration
             $table->id(); 
             $table->date('tanggal');
             $table->string('kode_keuangan');
-            $table->decimal('pemasukan', 20);
-            $table->decimal('pengeluaran', 20);
-            $table->decimal('saldo', 20);
-            $table->decimal('total', 20);
+            $table->string('pemasukan');
+            $table->string('pengeluaran');
+            $table->string('saldo');
+            $table->string('total');
             $table->timestamps();
 
-           // $table->foreignId('penjualan_id')->constrained('penjualan');
+        //    $table->foreignId('penjualan_id')->constrained('penjualan');
         });
     }
 

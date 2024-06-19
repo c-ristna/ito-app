@@ -12,6 +12,7 @@ class KeuanganController extends Controller
     public function index() //halaman tabel
     {
         $keuangan = Keuangan::all();
+        // return $konsumen;
         return view('component/keuangan/dataKeuangan')->with('keuangan', $keuangan);
     }
     public function create() //buat nampilin form nambah datanya
@@ -21,7 +22,7 @@ class KeuanganController extends Controller
 
     public function show($id)
     {
-        //
+   //
     }
     public function edit($id)
     {

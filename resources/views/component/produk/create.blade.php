@@ -21,7 +21,7 @@
     <body>
         <div class="tambah-data">
             <h1>Tambah Data Produk</h1>
-        <form method="POST" action="{{ url('produk/store') }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('produk') }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>
@@ -52,7 +52,7 @@
                         <input type="text" id="form-control" name="status" required="" placeholder="Ketik disini" /> 
                     </div>
                         <div class="button-container">
-                            <button type="submit" class="btn btn-secondary">Kembali</button>
+                            <button type="cancel" class="btn btn-secondary">Kembali</button>
                             <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </div>

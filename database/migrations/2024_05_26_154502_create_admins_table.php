@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateAdminsTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi untuk membuat tabel.
      *
      * @return void
      */
@@ -24,7 +24,7 @@ class CreateAdminsTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Balikkan migrasi dengan menghapus tabel.
      *
      * @return void
      */
