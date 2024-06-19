@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Konsumen</title>
+    <title>@yield('title') - Keuangan</title>
     
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ asset('assets/css/tabel.css') }}">
@@ -26,11 +26,11 @@
             </div>
         @endif
         <div class="customer"></div>
-        <h2 class="main--title">Data Konsumen</h2>
+        <h2 class="main--title">Data Keuangan</h2>
         <div class="tabular--wrapper">
             <div class="row-button">
                 <ul class="left">
-                    <a class="tambah" name="tambah" href="{{ url('/konsumen/create') }}">
+                    <a class="tambah" name="tambah" href="{{ url('/keuangan/create') }}">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                 </ul>
@@ -49,11 +49,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($konsumen as $key => $item)
+                        @foreach ($keuangan as $key => $item)
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $item->kode_konsumen }}</td>
-                                <td>{{ $item->nama_konsumen }}</td>
+                                <td>{{ $item->kode_keuangan }}</td>
+                                <td>{{ $item->nama_keuangan }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->no_telepon }}</td>
                                 <td>{{ $item->terakhir_pembelian }}</td>

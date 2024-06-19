@@ -6,8 +6,9 @@ use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
-//use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,9 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-//Route::get('/produk', function () {
-//});
-
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// })->middleware('auth');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('dashboard', function () {
     return view ('dashboard');
@@ -35,13 +31,11 @@ Route::get('dashboard', function () {
 // Route::get('home', function () {
 //     return view ('home');
 // });
-
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'loginStore']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
+Route::resource('/login', LoginController::class);
+Route::resource('/logout', LoginController::class);
 
 Route::resource('/konsumen', KonsumenController::class);
 Route::resource('/keuangan', KeuanganController::class);
 Route::resource('/produk', ProdukController::class);
 Route::resource('/penjualan', PenjualanController::class);
+Route::resource('/admin', AdminController::class);

@@ -16,7 +16,7 @@
 <body>
     
     <!-- =============== Navigation Dashboard Utama ================ -->
-    @include ('template_backend.sidebar')
+    <!-- @include ('template_backend.sidebar') -->
     
     @yield('content')
 

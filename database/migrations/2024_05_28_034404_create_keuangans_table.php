@@ -15,7 +15,8 @@ class CreateKeuangansTable extends Migration
     {
         Schema::create('keuangans', function (Blueprint $table) {
             $table->id(); 
-            $table->date('tanggal_keuangan');
+            $table->date('tanggal');
+            $table->string('kode_keuangan');
             $table->decimal('pemasukan', 20);
             $table->decimal('pengeluaran', 20);
             $table->decimal('saldo', 20);

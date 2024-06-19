@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
     //
-    public function login()
+    public function index()
     {
         return view('auth.login');
     }
-    public function loginStore(Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'email' => 'required|email',

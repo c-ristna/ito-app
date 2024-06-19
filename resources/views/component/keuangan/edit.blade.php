@@ -15,38 +15,38 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Produk</title>
+    <title>Keuangan</title>
     <link rel="stylesheet" href="{{ asset('assets/css/data.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
     <body>
         <div class="tambah-data">
-            <h1>Edit Data Produk</h1>
-        <form method="POST" action="{{ route('produk/update', $produk->id) }}" enctype="multipart/form">
+            <h1>Edit Data Keuangan</h1>
+        <form method="POST" action="{{ route('konsumen/update', $konsumen->id) }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>
                     <div>
-                        <label for="kode_produk">Kode Produk</label>
-                        <input type="text" id="form-control" name="kode_produk" value="{{ $produk->kode_produk }}" autofocus="" required=""
+                        <label for="kode_konsumen">Kode Konsumen</label>
+                        <input type="text" id="form-control" name="kode_konsumen" value="{{ $konsumen->kode_konsumen }}" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Nama Produk</label>
-                        <input type="text" id="form-control" name="nama_produk" value="{{ $produk->nama_produk }}" autofocus="" required=""
+                        <label class="form-label">Nama Konsumen</label>
+                        <input type="text" id="form-control" name="nama_konsumen" value="{{ $konsumen->nama_konsumen }}" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Harga</label>
-                        <input type="text" id="form-control" name="harga" value="{{ $produk->harga }}" required="" placeholder="Ketik disini" />
+                        <label class="form-label">Alamat</label>
+                        <input type="text" id="form-control" name="alamat" value="{{ $konsumen->alamat }}" required="" placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Stok</label>
-                        <input type="text" id="form-control" name="stok" value="{{ $produk->stok}}" required="" placeholder="Ketik disini" />
+                        <label class="form-label">No Telepon</label>
+                        <input type="text" id="form-control" name="no_telepon" value="{{ $konsumen->no_telepon }}" required="" placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Deskripsi</label>
-                        <input type="date" id="form-control" name="deskripsi" value="{{ $produk->deskripsi}}" required="" /> <br>
+                        <label class="form-label">Terakhir Pembelian</label>
+                        <input type="date" id="form-control" name="terakhir_pembelian" value="{{ $konsumen->terakhir_pembelian}}" required="" /> <br>
                     </div>
                         <div class="button-container">
                             <button type="submit" class="btn btn-secondary">Kembali</button>
