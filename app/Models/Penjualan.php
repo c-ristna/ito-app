@@ -15,7 +15,7 @@ class Penjualan extends Model
     protected $auditTimestamps = true;
 
     public $fillable = [
-        'id',
+        'kode_penjualan',
         'tanggal_penjualan',
         'list_produk',
         'total_harga',

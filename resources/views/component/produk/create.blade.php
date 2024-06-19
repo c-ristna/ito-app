@@ -15,13 +15,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Produk</title>
-    <link rel="stylesheet" href="{{asset('assets/css/data.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/data.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
     <body>
         <div class="tambah-data">
             <h1>Tambah Data Produk</h1>
-        <form method="POST" action="{{ url('produk/store') }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('produk') }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>

@@ -15,7 +15,8 @@ class CreatePenjualansTable extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_penjualan');
+            $table->string('kode_penjualan')->nullable();
+            $table->date('tanggal_penjualan')->nullable();
             $table->json('list_produk');
             $table->decimal('total_harga', 20);
             $table->string('metode_pembayaran', 20);

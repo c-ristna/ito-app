@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Penjualan</title>
+    <title>@yield('title') - Keuangan</title>
     
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{ asset('assets/css/tabel.css') }}">
@@ -26,11 +26,11 @@
             </div>
         @endif
         <div class="customer"></div>
-        <h2 class="main--title">Data Penjualan</h2>
+        <h2 class="main--title">Data Keuangan</h2>
         <div class="tabular--wrapper">
             <div class="row-button">
                 <ul class="left">
-                    <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
+                    <a class="tambah" name="tambah" href="{{ url('/keuangan/create') }}">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                 </ul>
@@ -39,34 +39,32 @@
                 <table>
                     <thead>
                         <tr>
-                          <th scope="col">No</th>
-                          <th scope="col">Kode Penjualan</th>
-                          <th scope="col">Tanggal Penjualan</th>
-                          <th scope="col">List Produk</th>
-                          <th scope="col">Total Harga</th>
-                          <th scope="col">Metode Pembayaran</th>
-                          <th scope="col">Status Penjualan</th>
-                          <th scope="col">Aksi</th>
+                            <th scope="col">No</th>
+                            <th scope="col">Kode Konsumen</th>
+                            <th scope="col">Nama Konsumen</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">No Telepon</th>
+                            <th scope="col">Terakhir Pembelian</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($penjualan as $key => $item)
+                        @foreach ($keuangan as $key => $item)
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $item->kode_penjualan }}</td>
-                                <td>{{ $item->tanggal_penjualan }}</td>
-                                <td>{{ $item->list_produk }}</td>
-                                <td>{{ $item->total_harga }}</td>
-                                <td>{{ $item->metode_pembayaran }}</td>
-                                <td>{{ $item->status_penjualan }}</td>
+                                <td>{{ $item->kode_keuangan }}</td>
+                                <td>{{ $item->nama_keuangan }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->no_telepon }}</td>
+                                <td>{{ $item->terakhir_pembelian }}</td>
                                 <td class="button-container">
                                     <button>
-                                        <a href="{{ url('/penjualan/edit', $item->id) }}">
+                                        <a href="{{ url('/konsumen/edit', $item->id) }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </button>
                                     <button>
-                                        <a href="{{ url('/penjualan/destroy', $item->id) }}">
+                                        <a href="{{ url('/konsumen/destroy', $item->id) }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </button>

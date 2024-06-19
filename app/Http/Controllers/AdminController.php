@@ -3,37 +3,57 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
-    public function login()
+    public function index() //halaman tabel
     {
-        return view('auth.login');
+        $admin = Admin::all();
+        return view('component/admin/dataAdmin')->with('admin', $admin);
     }
-    public function loginStore(Request $request)
+    public function create() //buat nampilin form nambah datanya
     {
-        $data = $request->validate([
-            'nama_admin' => 'required|max:225',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
-        ]);
-
-        if(Auth::attempt($data)){
-            $request->session()->regenerate();
-
-            return redirect()->route('home');
-        }
-        return back()->with('error', 'Email atau password salah!');
+        return view('component/admin/create');
     }
-    public function logout(Request $request)
+
+    public function show($id)
     {
-        Auth::logout();
+   //
+    }
+    public function edit($id)
+    {
+        $admin = Admin::findorfail($id);
+        return view('component/admin/edit', compact('admin'));
+    }
+    public function store(Request $request) //buat simpan data
+    {
+      Admin::create([
+        'nama_admin'         => $request->nama_admin,
+        'email'              => $request->email,
+        'password'           => $request->password,
+      ]);
+      return redirect('admin')->with('status', 'Data Admin Berhasil ditambahkan!');
+      }
 
-        $request->session()->invalidate();
+      public function update(Request $request, $id)
+      {
+          $record = Admin::find($id);
+      
+          $validatedData = $request->validate([
+            'nama_admin'         => $request->nama_admin,
+            'email'              => $request->email,
+            'password'           => $request->password,
+          ]);
+      
+          $record->fill($validatedData);
+          $record->save();
+      
+          return redirect('admin')->with('status', 'Data Admin Berhasil diperbarui!');
+      }    
+      function detail(){
 
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login');
     }
 }

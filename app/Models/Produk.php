@@ -16,7 +16,7 @@ class Produk extends Model
     protected $auditTimestamps = true;
 
     public $fillable = [
-        'id',
+        'kode_produk',
         'nama_produk',
         'harga',
         'stok',
