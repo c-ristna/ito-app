@@ -11,14 +11,14 @@
 
 <div class="container mt-5">
     <h1>Edit Data Produk</h1>
-    <form method="POST" action="{{ route('produk.update', $produk->id) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('penjualan.update', $penjualan->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="kode_produk" class="form-label">Kode Produk</label>
-            <input type="text" class="form-control" id="kode_produk" name="kode_produk" value="{{ $produk->kode_produk }}" required placeholder="Ketik disini">
+            <label for="kode_kosnumen" class="form-label">Kode Konsumen</label>
+            <input type="text" class="form-control" id="kode_konsumen" name="kode_konsumen" value="{{ $penjualan->kode_penjualan }}" required placeholder="Ketik disini">
         </div>
         <div class="mb-3">
-            <label for="nama_produk" class="form-label">Nama Produk</label>
+            <label for="nama_penjualan" class="form-label">Nama penjualan</label>
             <input type="text" class="form-control" id="nama_produk" name="nama_produk" value="{{ $produk->nama_produk }}" required placeholder="Ketik disini">
         </div>
         <div class="mb-3">
@@ -33,6 +33,8 @@
             <label for="deskripsi" class="form-label">Deskripsi</label>
             <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{ $produk->deskripsi }}" required placeholder="Ketik disini">
         </div>
+
+
         <div class="button-container">
             <button type="cancel" class="btn btn-secondary">Kembali</button>
             <button type="submit" class="btn btn-success">Simpan Perubahan</button>

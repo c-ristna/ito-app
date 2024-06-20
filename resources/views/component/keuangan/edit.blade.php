@@ -11,7 +11,7 @@
 
 <div class="container mt-5">
     <h1>Edit Data Keuangan</h1>
-    <form method="POST" action="{{ route('keuangan.update', $keuangan->id) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('keuangan/update', $keuangan->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="kode_keuangan" class="form-label">Kode keuangan</label>

@@ -3,9 +3,9 @@
 @section('title', 'Dashboard ITO')
 
 @section('content')
-    @if (Session::has('success'))
+    @if (session()->has('success'))
         <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
+            {{ session('success') }}
         </div>
     @endif
     <div class="customer"></div>
@@ -13,7 +13,7 @@
     <div class="tabular--wrapper">
         <div class="row-button">
             <ul class="left">
-                <a class="tambah" name="tambah" href="{{ url('/admin/create') }}">
+                <a class="tambah" href="{{ route('admin.create') }}">
                     <i class="fa fa-plus"></i> Tambah
                 </a>
             </ul>
@@ -25,7 +25,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama Admin</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Aksi</th>
+                        <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,12 +35,14 @@
                             <td>{{ $item->nama_admin }}</td>
                             <td>{{ $item->email }}</td>
                             <td class="button-container">
-                                <button class="btn btn-primary" onclick="window.location.href='{{ url('/admin/edit', $item->id) }}'">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn btn-danger" onclick="window.location.href='{{ url('/admin/destroy', $item->id) }}'">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
+                                <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('admin/' . $item->id . '/edit') }}'"></button>
+                            </td>
+                            <td>
+                                <form action="{{ url('admin/' . $item->id) }}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -58,7 +60,6 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 @endpush
-

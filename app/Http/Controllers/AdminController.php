@@ -18,7 +18,8 @@ class AdminController extends Controller
     // Menampilkan form untuk menambah data
     public function create()
     {
-        return view('component/admin/create');
+        $admin = new Admin;
+        return view('component/admin/create', compact('admin'));
     }
 
     // Menampilkan detail admin (belum diimplementasikan)
@@ -30,10 +31,12 @@ class AdminController extends Controller
     // Menampilkan form untuk mengedit data
     public function edit($id)
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::find($id);
         return view('component/admin/edit', compact('admin'));
     }
 
+
+    
     // Menyimpan data admin baru
     public function store(Request $request)
     {
@@ -46,13 +49,13 @@ class AdminController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         Admin::create($validatedData);
-        return redirect('admin')->with('status', 'Data Admin berhasil ditambahkan!');
+        return redirect('admin');
     }
 
     // Memperbarui data admin
     public function update(Request $request, $id)
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::find($id);
 
         $validatedData = $request->validate([
             'nama_admin' => 'required',
@@ -63,12 +66,24 @@ class AdminController extends Controller
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         $admin->update($validatedData);
-        return redirect('admin')->with('status', 'Data Admin berhasil diperbarui!');
+        return redirect('admin');
+    }
+/**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+    public function destroy($id)
+    {
+        $admin = Admin::find($id);
+        $admin->delete();
+        return redirect('admin');
     }
 
     // Detail admin (belum diimplementasikan)
     public function detail()
     {
-        //
+       //
     }
 }

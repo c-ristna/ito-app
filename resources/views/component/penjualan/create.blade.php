@@ -20,8 +20,8 @@
   </head>
     <body>
         <div class="tambah-data">
-            <h1>Tambah Data Produk</h1>
-        <form method="POST" action="{{ url('produk/store') }}" enctype="multipart/form">
+            <h1>Tambah Data Penjualan</h1>
+        <form method="POST" action="{{ url('penjualan/store') }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>

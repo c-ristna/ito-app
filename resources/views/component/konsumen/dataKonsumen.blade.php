@@ -13,7 +13,7 @@
     <div class="tabular--wrapper">
     <div class="row-button">
                 <ul class="left">
-                    <a class="tambah" name="tambah" href="{{ url('/konsumen/create') }}">
+                    <a class="tambah" name="tambah" href="{{ url('konsumen/create') }}">
                         <i class="fa fa-plus"></i> Tambah
                     </a>
                 </ul>
@@ -28,7 +28,7 @@
                         <th scope="col">Alamat</th>
                         <th scope="col">No Telepon</th>
                         <th scope="col">Terakhir Pembelian</th>
-                        <th scope="col">Aksi</th>
+                        <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,12 +41,14 @@
                             <td>{{ $item->no_telepon }}</td>
                             <td>{{ $item->terakhir_pembelian }}</td>
                             <td class="button-container">
-                                <button class="btn btn-primary" onclick="window.location.href='{{ url('/konsumen/edit', $item->id) }}'">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn btn-danger" onclick="window.location.href='{{ url('/konsumen/destroy', $item->id) }}'">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
+                                <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('konsumen/' . $item->id . '/edit') }}'"></button>
+                            </td>
+                            <td>
+                                <form action="{{ url('konsumen/' . $item->id) }}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -67,4 +69,3 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 @endpush
-

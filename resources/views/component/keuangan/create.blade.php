@@ -21,7 +21,7 @@
     <body>
         <div class="tambah-data">
             <h1>Tambah Data Keuangan</h1>
-        <form method="POST" action="{{ url('keuangan') }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('keuangan/store') }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>
