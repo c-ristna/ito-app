@@ -17,7 +17,7 @@ class CreatePenjualansTable extends Migration
             $table->id();
             $table->date('tanggal_penjualan');
             $table->json('list_produk');
-            $table->decimal('total_harga', 20);
+            $table->float('total_harga');
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
             $table->unsignedBigInteger('konsumens_id');

@@ -34,8 +34,6 @@ class AdminController extends Controller
         $admin = Admin::find($id);
         return view('component/admin/edit', compact('admin'));
     }
-
-
     
     // Menyimpan data admin baru
     public function store(Request $request)
@@ -78,7 +76,7 @@ class AdminController extends Controller
     {
         $admin = Admin::find($id);
         $admin->delete();
-        return redirect('admin');
+        return redirect('admin')->with('success');
     }
 
     // Detail admin (belum diimplementasikan)

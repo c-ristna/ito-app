@@ -19,7 +19,7 @@
     <body>
         <div class="tambah-data">
             <h1>Edit Data Admin</h1>
-        <form method="POST" action={{ url('admin/' . $admin->id) }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('admin/' . $admin->id) }}" enctype="multipart/form">
         @method('PATCH')    
         @csrf
             <section class="base">

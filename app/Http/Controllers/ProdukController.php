@@ -23,18 +23,14 @@ class ProdukController extends Controller
 
     public function show($id)
     {
-   //
+        //
     }
     public function edit($id)
     {
-        $produk = Produk::all();
-        return view('component/produk/edit')->with('produk', $produk);
+        $produk = Produk::find($id);
+        return view('component/produk/edit', compact('produk'));
     }
 
-    public function destroy($id, Request $request)
-    {
-        //
-    }
     public function store(Request $request) //buat simpan data
     {
         Produk::create([
@@ -47,6 +43,32 @@ class ProdukController extends Controller
         ]);
         return redirect('produk')->with('status', 'Data Produk Berhasil ditambahkan!');
     }
+
+    // Memperbarui data produk
+    public function update(Request $request, $id)
+    {
+        $produk = Produk::find($id);
+
+        $validatedData = $request->validate([
+            'kode_produk' => 'required',
+            'nama_produk' => 'required',
+            'harga'       => 'required',
+            'stok'        => 'required',
+            'deskripsi'   => 'required',
+            'status'      => 'required'
+        ]);
+
+        $produk->update($validatedData);
+        return redirect('produk');
+    }
+
+    public function destroy($id)
+    {
+        $produk = Produk::find($id);
+        $produk->delete();
+        return redirect('produk')->with('success');
+    }
+
     function detail(){
 
     }
