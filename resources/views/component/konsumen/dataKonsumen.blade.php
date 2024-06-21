@@ -49,33 +49,9 @@
                                 </button>
                             </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($konsumen as $key => $item)
-                            <tr>
-                                <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $item->kode_konsumen }}</td>
-                                <td>{{ $item->nama_konsumen }}</td>
-                                <td>{{ $item->alamat }}</td>
-                                <td>{{ $item->no_telepon }}</td>
-                                <td>{{ $item->terakhir_pembelian }}</td>
-                                <td class="button-container">
-                                    <button>
-                                    <a href="{{ route('konsumen.edit', $item->id) }}">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    </button>
-                                    <button>
-                                        <a href="{{ url('/konsumen/destroy', $item->id) }}">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
@@ -91,4 +67,3 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
 @endpush
-

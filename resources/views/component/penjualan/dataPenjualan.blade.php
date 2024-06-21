@@ -24,67 +24,50 @@
     <div class="customer"></div>
     <h2 class="main--title">Data Penjualan</h2>
     <div class="tabular--wrapper">
-    <div class="row-button">
-                <ul class="left">
-                    <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
-                        <i class="fa fa-plus"></i> Tambah
-                    </a>
-                </ul>
-            </div>
+        <div class="row-button">
+            <ul class="left">
+                <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
+                    <i class="fa fa-plus"></i> Tambah
+                </a>
+            </ul>
+        </div>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">ID Penjualan</th>
+                        <th scope="col">Kode Penjualan</th>
                         <th scope="col">Tanggal Penjualan</th>
                         <th scope="col">List Produk</th>
                         <th scope="col">Total Harga</th>
                         <th scope="col">Metode Pembayaran</th>
                         <th scope="col">Status Penjualan</th>
+                        <th scope="col">Konsumen</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($penjualan as $key => $item)
                         <tr>
-                          <th scope="col">No</th>
-                          <th scope="col">Kode Penjualan</th>
-                          <th scope="col">Tanggal Penjualan</th>
-                          <th scope="col">List Produk</th>
-                          <th scope="col">Total Harga</th>
-                          <th scope="col">Metode Pembayaran</th>
-                          <th scope="col">Status Penjualan</th>
-                          <th scope="col">Aksi</th>
+                            <th scope="row">{{ ++$key }}</th>
+                            <td>{{ $item->kode_penjualan }}</td>
+                            <td>{{ $item->tanggal_penjualan }}</td>
+                            <td>{{ $item->list_produk }}</td>
+                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ $item->metode_pembayaran }}</td>
+                            <td>{{ $item->status_penjualan }}</td>
+                            <td>{{ $item->nama_konsumen }}</td>
+                            <td class="button-container">
+                                <button class="btn btn-primary" onclick="window.location.href='{{ url('/penjualan/edit', $item->id) }}'">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn btn-danger" onclick="window.location.href='{{ url('/penjualan/destroy', $item->id) }}'">
+                                    <i class="fa-solid fa-trash"></i>
+                            </button>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($penjualan as $key => $item)
-                            <tr>
-                                <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $item->kode_penjualan }}</td>
-                                <td>{{ $item->tanggal_penjualan }}</td>
-                                <td>{{ $item->list_produk }}</td>
-                                <td>{{ $item->total_harga }}</td>
-                                <td>{{ $item->metode_pembayaran }}</td>
-                                <td>{{ $item->status_penjualan }}</td>
-                                <td class="button-container">
-                                    <button>
-                                        <a href="{{ url('/penjualan/edit', $item->id) }}">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
-                                    </button>
-                                    <button>
-                                        <a href="{{ url('/penjualan/destroy', $item->id) }}">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

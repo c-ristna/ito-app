@@ -20,6 +20,7 @@ class Penjualan extends Model
         'list_produk',
         'total_harga',
         'metode_pembayaran',
-        'status_penjualan'
+        'status_penjualan',
+        'konsumens_id'
     ];
 }

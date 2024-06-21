@@ -24,31 +24,32 @@
 
     <form method="POST" action="{{ route('konsumen.update', $konsumen->id) }}" enctype="multipart/form-data">
       @csrf
+      @method('POST')
       <section class="base">
         <div class="form"></div>
         <div>
           <label for="kode_konsumen">Kode Konsumen</label>
-          <input type="text" id="kode_konsumen" name="kode_konsumen" value="{{ $konsumen->kode_konsumen }}" autofocus="" readonly="" placeholder="Ketik disini" />
+          <input type="text" id="kode_konsumen" name="kode_konsumen" value="{{ $konsumen->kode_konsumen }}" readonly placeholder="Ketik disini" />
         </div>
         <div>
           <label class="form-label" for="nama_konsumen">Nama Konsumen</label>
-          <input type="text" id="nama_konsumen" name="nama_konsumen" value="{{ old('nama_konsumen', $konsumen->nama_konsumen) }}" autofocus="" required="" placeholder="Ketik disini" />
+          <input type="text" id="nama_konsumen" name="nama_konsumen" value="{{ old('nama_konsumen', $konsumen->nama_konsumen) }}" required placeholder="Ketik disini" />
         </div>
         <div>
           <label class="form-label" for="alamat">Alamat</label>
-          <input type="text" id="alamat" name="alamat" value="{{ old('alamat', $konsumen->alamat) }}" required="" placeholder="Ketik disini" />
+          <input type="text" id="alamat" name="alamat" value="{{ old('alamat', $konsumen->alamat) }}" required placeholder="Ketik disini" />
         </div>
         <div>
           <label class="form-label" for="no_telepon">No Telepon</label>
-          <input type="text" id="no_telepon" name="no_telepon" value="{{ old('no_telepon', $konsumen->no_telepon) }}" required="" placeholder="Ketik disini" />
+          <input type="text" id="no_telepon" name="no_telepon" value="{{ old('no_telepon', $konsumen->no_telepon) }}" required placeholder="Ketik disini" />
         </div>
         <div>
           <label class="form-label" for="terakhir_pembelian">Terakhir Pembelian</label>
-          <input type="date" id="terakhir_pembelian" name="terakhir_pembelian" value="{{ old('terakhir_pembelian', $konsumen->terakhir_pembelian) }}" required="" />
+          <input type="date" id="terakhir_pembelian" name="terakhir_pembelian" value="{{ old('terakhir_pembelian', $konsumen->terakhir_pembelian) }}" required />
         </div>
         <div class="button-container">
-          <a href="{{ route('konsumen.index') }}"  class="btn btn-primary">Simpan Perubahan</button>
           <a href="{{ route('konsumen.index') }}" class="btn btn-secondary">Kembali</a>
+          <button type="submit" class="btn btn-success">Simpan</button>
         </div>
       </section>
     </form>

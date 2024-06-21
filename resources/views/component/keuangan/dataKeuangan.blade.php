@@ -45,6 +45,7 @@
                             <th scope="col">Pemasukan</th>
                             <th scope="col">Pengeluaran</th>
                             <th scope="col">Saldo</th>
+                            <th scope="col">Total Harga Penjualan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -57,6 +58,7 @@
                                 <td>{{ $item->pemasukan }}</td>
                                 <td>{{ $item->pengeluaran }}</td>
                                 <td>{{ $item->saldo }}</td>
+                                <td>{{ $item->total_harga }}</td>
                                 <td class="button-container">
                                     <button>
                                         <a href="{{ url('/keuangan/edit', $item->id) }}">

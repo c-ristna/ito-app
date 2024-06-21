@@ -17,17 +17,17 @@ class CreatePenjualansTable extends Migration
             $table->id();
             $table->string('kode_penjualan')->nullable();
             $table->date('tanggal_penjualan')->nullable();
-            $table->json('list_produk');
+            $table->string('list_produk');
             $table->decimal('total_harga', 20);
             $table->string('metode_pembayaran', 20);
             $table->string('status_penjualan', 20);
             $table->unsignedBigInteger('konsumens_id');
-            $table->unsignedBigInteger('produks_id');
+            //$table->unsignedBigInteger('produks_id');
             $table->timestamps();
 
             // Define foreign keys
             $table->foreign('konsumens_id')->references('id')->on('konsumens');
-            $table->foreign('produks_id')->references('id')->on('produks');
+            //$table->foreign('produks_id')->references('id')->on('produks');
         });
     }
 

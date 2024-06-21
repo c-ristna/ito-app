@@ -26,35 +26,56 @@
             <section class="base">
                 <div class="form"></div>
                     <div>
-                        <label for="kode_produk">Kode Penjualan</label>
-                        <input type="text" id="form-control" name="kode_produk" autofocus="" required=""
+                        <label for="kode_penjualan">Kode Penjualan</label>
+                        <input type="text" id="form-control" name="kode_penjualan" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
                         <label class="form-label">Tanggal Penjualan</label>
-                        <input type="date" id="form-control" name="nama_produk" autofocus="" required=""
+                        <input type="date" id="form-control" name="tanggal_penjualan" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
                         <label class="form-label">List Produk</label>
-                        <input type="text" id="form-control" name="harga" required="" placeholder="Ketik disini" />
+                        <select name="list_produk" class="form-control" required>
+                            <option value="">Pilih Produk</option>
+                            <option value="Puding">Puding</option>
+                            <option value="Keripik pisang">Keripik Pisang</option>
+                            <option value="Makaroni">Makaroni</option>
+                            <!-- Add more options as needed -->
+                          </select>
                     </div>
                     <div>
                         <label class="form-label">Total Harga</label>
-                        <input type="text" id="form-control" name="stok" required="" placeholder="Ketik disini" />
+                        <input type="decimal" id="form-control" name="total_harga" required="" placeholder="Ketik disini" />
+                    </div>
+                    <div class="form-group">
+                        <label for="metode_pembayaran">Metode Pembayaran</label>
+                        <select name="metode_pembayaran" id="metode_pembayaran" required>
+                            <option value="">Pilih Metode Pembayaran</option>
+                            <option value="Cash" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Cash' ? 'selected' : '' }}>Cash</option>
+                            <option value="Dana" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Dana' ? 'selected' : '' }}>Dana</option>
+                            <option value="Bank" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Bank' ? 'selected' : '' }}>Bank</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status_penjualan">Status Penjualan</label>
+                        <select name="status_penjualan" id="status_penjualan" required>
+                            <option value="">Pilih Status Penjualan</option>
+                            <option value="Terkirim">Terkirim</option>
+                            <option value="Tertunda">Tertunda</option>
+                            <!-- Add more options as needed -->
+                        </select>
                     </div>
                     <div>
-                        <label class="form-label">Metode Pembayaran</label>
-                        <input type="text" id="form-control" name="deskripsi" required="" placeholder="Ketik disini" />
+                        <label class="form-label">Konsumen ID</label>
+                        <input type="number" class="form-control" name="konsumens_id" required="" placeholder="Ketik disini" /> 
                     </div>
-                    <div>
-                        <label class="form-label">Status Penjualan</label>
-                        <input type="text" id="form-control" name="status" required="" placeholder="Ketik disini" /> 
+                    <div class="button-container">
+                        <button type="cancel" class="btn btn-secondary">Kembali</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
-                        <div class="button-container">
-                            <button type="cancel" class="btn btn-secondary">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
                     </div>
             </section>
         </form>

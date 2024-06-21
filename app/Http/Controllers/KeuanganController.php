@@ -6,20 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Keuangan;
+use App\Models\Penjualan;
 
 class KeuanganController extends Controller
 {
     public function index() //halaman tabel
     {
-        $keuangan = Keuangan::all();
-        // return $konsumen;
+        $keuangan = DB::table('keuangans')
+            ->join('penjualans', 'keuangans.penjualans_id', '=', 'penjualans.id')
+            ->select('keuangans.*', 'penjualans.total_harga')
+            ->latest()
+            ->paginate(5);
         return view('component/keuangan/dataKeuangan')->with('keuangan', $keuangan);
     }
-    public function create() //buat nampilin form nambah datanya
+    public function create() // Display form to add new keuangan data
     {
-        return view('component/keuangan/create');
-    }
-
+        $penjualans = Penjualan::all(); // Retrieve all penjualans
+        return view('component/keuangan/create', compact('penjualans'));
+}
     public function show($id)
     {
    //
@@ -42,6 +46,7 @@ class KeuanganController extends Controller
             'pemasukan'          => $request->pemasukan,
             'pengeluaran'        => $request->pengeluaran,
             'saldo'              => $request->saldo,
+            'penjualans_id'      => $request->penjualans_id,
         ]);
         return redirect('keuangan')->with('status', 'Data Keuangan Berhasil ditambahkan!');
     }
@@ -49,3 +54,4 @@ class KeuanganController extends Controller
 
     }
 }
+
