@@ -31,8 +31,8 @@
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Tanggal Penjualan</label>
-                        <input type="date" id="form-control" name="tanggal_penjualan" autofocus="" required=""
+                        <label class="form-label">Tanggal</label>
+                        <input type="date" id="form-control" name="tanggal" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
@@ -47,7 +47,7 @@
                     </div>
                     <div>
                         <label class="form-label">Total Harga</label>
-                        <input type="decimal" id="form-control" name="total_harga" required="" placeholder="Ketik disini" />
+                        <input type="text" id="form-control" name="total_harga" required="" placeholder="Ketik disini" />
                     </div>
                     <div class="form-group">
                         <label for="metode_pembayaran">Metode Pembayaran</label>
@@ -60,8 +60,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="status_penjualan">Status Penjualan</label>
-                        <select name="status_penjualan" id="status_penjualan" required>
+                        <label for="status">Status</label>
+                        <select name="status" id="status" required>
                             <option value="">Pilih Status Penjualan</option>
                             <option value="Terkirim">Terkirim</option>
                             <option value="Tertunda">Tertunda</option>
@@ -73,8 +73,8 @@
                         <input type="number" class="form-control" name="konsumens_id" required="" placeholder="Ketik disini" /> 
                     </div>
                     <div class="button-container">
-                        <button type="cancel" class="btn btn-secondary">Kembali</button>
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                        <button type="submit" class="btn btn-success" onclick="this.form.submit();">Simpan</button>
                     </div>
                     </div>
             </section>

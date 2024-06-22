@@ -22,7 +22,7 @@
         <form method="POST" action="{{ url('admin') }}" enctype="multipart/form">
             @csrf
             <section class="base">
-                <div class="form"></div>
+                <div class="form">
                     <div>
                         <label class="form-label">Nama Admin</label>
                         <input type="text" id="form-control" name="nama_admin" autofocus="" required=""
@@ -34,13 +34,13 @@
                     </div>
                     <div>
                         <label class="form-label">Password</label>
-                        <input type="text" id="form-control" name="password" required="" placeholder="Ketik disini" />
+                        <input type="password" id="form-control" name="password" required="" placeholder="Ketik disini" />
                     </div>
-                        <div class="button-container">
-                            <button type="cancel" class="btn btn-secondary">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                        <button type="submit" class="btn btn-success" onclick="this.form.submit();">Simpan</button>
                     </div>
+                </div>
             </section>
         </form>
 </div>

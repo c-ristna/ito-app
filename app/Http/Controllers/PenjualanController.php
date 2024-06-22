@@ -31,23 +31,23 @@ class PenjualanController extends Controller
   
       public function edit($id)
       {
-          $penjualan = Penjualan::findOrFail($id);
-          return view('component/penjualan/edit', compact('penjualan'));
+        $penjualan = Penjualan::findOrFail($id);
+        return view('component.penjualan.edit', compact('penjualan'));
       }
   
       public function store(Request $request) //buat simpan data
       {
           Penjualan::create([
               'kode_penjualan'        => $request->kode_penjualan,
-              'tanggal_penjualan'     => $request->tanggal_penjualan,
+              'tanggal'               => $request->tanggal,
               'list_produk'           => $request->list_produk,
               'total_harga'           => $request->total_harga,
               'metode_pembayaran'     => $request->metode_pembayaran,
-              'status_penjualan'      => $request->status_penjualan,
+              'status'                => $request->status,
               'konsumens_id'          => $request->konsumens_id,
           ]);
   
-          return redirect('penjualan')->with('status', 'Data Penjualan Berhasil ditambahkan!');
+        return redirect('penjualan')->with('status', 'Data Penjualan Berhasil ditambahkan!');
       }
   
       public function update(Request $request, $id)
@@ -56,23 +56,30 @@ class PenjualanController extends Controller
   
           $validatedData = $request->validate([
               'kode_penjualan'        => $request->kode_penjualan,
-              'tanggal_penjualan'     => $request->tanggal_penjualan,
+              'tanggal'               => $request->tanggal,
               'list_produk'           => $request->list_produk,
               'total_harga'           => $request->total_harga,
               'metode_pembayaran'     => $request->metode_pembayaran,
-              'status_penjualan'      => $request->status_penjualan,
+              'status'                => $request->status,
               'konsumens_id'          => $request->konsumens_id,
           ]);
   
-          $record->fill($validatedData);
-          $record->save();
+          $penjualan = Penjualan::findOrFail($id);
+          $penjualan->update($validatedData);
   
-          return redirect('penjualan')->with('status', 'Data Penjualan Berhasil diperbarui!');
+          return redirect('penjualan')->with('status');
+      }
+  
+      public function destroy($id)
+      {
+          $penjualan = Penjualan::findOrFail($id);
+          $penjualan->delete();
+  
+          return redirect('penjualan')->with('status');
       }
   
       public function detail()
       {
-          //
+          // Method implementation here
       }
   }
-  

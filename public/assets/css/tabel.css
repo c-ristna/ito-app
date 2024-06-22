@@ -326,22 +326,34 @@ h2.main--title {
   padding-left: 10px;
 }
 
-button{
+td button {
   outline: none;
+  text-decoration: none;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   padding: 15px;
   color: #fff;
-  background: border-box;
 }
 
-td button:nth-child(1) {
-  background-color: #218100;
+.button:link, 
+.button:visited, 
+.button:hover, 
+.button:active, 
+.button:focus {
+  background-color: #218100; /* Inherit background color */
+  color: white; /* Text color remains white */
+  text-decoration: none; /* No underline */
+  border: none; /* No border */
+  outline: none; /* No outline */
 }
 
-td button:nth-child(2) {
-  background-color: #B40000;
+.btn-primary {
+  background-color: #218100; /* Change as needed for Bootstrap primary color */
+}
+
+.btn-danger {
+  background-color: #B40000; /* Change as needed for Bootstrap danger color */
 }
 
 table {

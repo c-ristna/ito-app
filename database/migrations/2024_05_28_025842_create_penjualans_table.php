@@ -16,11 +16,11 @@ class CreatePenjualansTable extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
             $table->string('kode_penjualan')->nullable();
-            $table->date('tanggal_penjualan')->nullable();
+            $table->date('tanggal')->nullable();
             $table->string('list_produk');
-            $table->decimal('total_harga', 20);
+            $table->float('total_harga')->nullable();
             $table->string('metode_pembayaran', 20);
-            $table->string('status_penjualan', 20);
+            $table->string('status', 20);
             $table->unsignedBigInteger('konsumens_id');
             //$table->unsignedBigInteger('produks_id');
             $table->timestamps();

@@ -27,7 +27,7 @@
         <div class="row-button">
             <ul class="left">
                 <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
-                    <i class="fa fa-plus"></i> Tambah
+                    <i class="fas fa-plus"></i> Tambah
                 </a>
             </ul>
         </div>
@@ -37,13 +37,13 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Kode Penjualan</th>
-                        <th scope="col">Tanggal Penjualan</th>
+                        <th scope="col">Tanggal</th>
                         <th scope="col">List Produk</th>
                         <th scope="col">Total Harga</th>
                         <th scope="col">Metode Pembayaran</th>
-                        <th scope="col">Status Penjualan</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Konsumen</th>
-                        <th scope="col">Aksi</th>
+                        <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,19 +51,22 @@
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
-                            <td>{{ $item->tanggal_penjualan }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
                             <td>{{ $item->list_produk }}</td>
-                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ formatRupiah(floatval($item->total_harga)) }}</td>
                             <td>{{ $item->metode_pembayaran }}</td>
-                            <td>{{ $item->status_penjualan }}</td>
+                            <td>{{ $item->status }}</td>
                             <td>{{ $item->nama_konsumen }}</td>
                             <td class="button-container">
-                                <button class="btn btn-primary" onclick="window.location.href='{{ url('/penjualan/edit', $item->id) }}'">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn btn-danger" onclick="window.location.href='{{ url('/penjualan/destroy', $item->id) }}'">
-                                    <i class="fa-solid fa-trash"></i>
-                            </button>
+                                <button class="btn btn-primary fas fa-pen-to-square" onclick="window.location.href='{{ url('penjualan/' . $item->id . '/edit') }}'"></button>
+                            </td>
+                            <td>
+                                <form action="{{ url('penjualan/' . $item->id) }}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger fas fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -3,62 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Konsumen;
+use Illuminate\Support\Facades\Hash;
 
 class KonsumenController extends Controller
 {
-    public function index() //halaman tabel
-    {
-        $konsumen = Konsumen::all();
-        // return $konsumen;
-        return view('component/konsumen/dataKonsumen')->with('konsumen', $konsumen);
-    }
-    public function create() //buat nampilin form nambah datanya
-    {
-        return view('component/konsumen/create');
-    }
+  public function index()
+  {
+      $konsumen = Konsumen::all();
+      return view('component/konsumen/dataKonsumen', compact('konsumen'));
+  }
+  public function create()
+  {
+      $konsumen = new Konsumen;
+      return view('component/konsumen/create', compact('konsumen'));
+  }
 
-    public function show($id)
-    {
-   //
-    }
-    public function edit($id)
-    {
-        $konsumen = Konsumen::findorfail($id);
-        return view('component/konsumen/edit', compact('konsumen'));
-    }
-    public function store(Request $request) //buat simpan data
-    {
-      Konsumen::create([
-        'kode_konsumen'         => $request->kode_konsumen,
-        'nama_konsumen'         => $request->nama_konsumen,
-        'alamat'                => $request->alamat,
-        'no_telepon'            => $request->no_telepon,
-        'terakhir_pembelian'    => $request->terakhir_pembelian,
+  public function store(Request $request) //buat simpan data
+  {
+      $konsumen = new Konsumen;
+      $konsumen->kode_konsumen = $request->kode_konsumen;
+      $konsumen->nama_konsumen = $request->nama_konsumen;
+      $konsumen->alamat = $request->alamat;
+      $konsumen->no_telepon = $request->no_telepon;
+      $konsumen->terakhir_pembelian = $request->terakhir_pembelian;
+      $konsumen->save();
+
+      return redirect('konsumen');
+  }
+
+  public function edit($id)
+  {
+      $konsumen = Konsumen::findorfail($id);
+      return view('component/konsumen/edit', compact('konsumen'));
+  }
+
+  public function update(Request $request, $id)
+  {
+      $record = Konsumen::find($id);
+
+      $validatedData = $request->validate([
+        'kode_konsumen' => 'required',
+        'nama_konsumen' => 'required',
+        'alamat' => 'required',
+        'no_telepon' => 'required',
+        'terakhir_pembelian' => 'required',
       ]);
-      return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
-      }
 
-      public function update(Request $request, $id)
-      {
-          $record = Konsumen::find($id);
-      
-          $validatedData = $request->validate([
-            'kode_konsumen'         => $request->kode_konsumen, 
-            'nama_konsumen'         => $request->nama_konsumen,
-            'alamat'                => $request->alamat,
-            'no_telepon'            => $request->no_telepon,
-            'terakhir_pembelian'    => $request->terakhir_pembelian,
-          ]);
-      
-          $record->fill($validatedData);
-          $record->save();
-      
-          return redirect('konsumen')->with('status', 'Data Konsumen Berhasil diperbarui!');
-      }    
-      function detail(){
+      $record->fill($validatedData);
+      $record->save();
 
-    }
+      return redirect('konsumen')->with('status');
+  }
+
+  public function destroy($id)
+  {
+      $konsumen = Konsumen::find($id);
+      $konsumen->delete();
+      return redirect('konsumen')->with('success');
+  }
+
+  function detail()
+  {
+    //
+  }
 }
+

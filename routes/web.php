@@ -35,10 +35,25 @@ Route::resource('/login', LoginController::class);
 Route::resource('/logout', LoginController::class);
 
 Route::resource('/konsumen', KonsumenController::class);
-//Route::get('/konsumen/edit/{id}', [KonsumenController::class, 'edit'])->name('konsumen.edit');
-//Route::post('/konsumen/update/{id}', [KonsumenController::class, 'update'])->name('konsumen.update');
+
+// Route get => konsumen => index
+// Route get => konsumen/create => create
+// Route post => konsumen => store
+// Route get => konsumen/{id} => show
+// Route put/patch => konsumen/{id} => update
+// Route delete => konsumen/{id} => delete
+// Route get => konsumen/{id}/edit => edit
 
 Route::resource('/keuangan', KeuanganController::class);
 Route::resource('/produk', ProdukController::class);
 Route::resource('/penjualan', PenjualanController::class);
+
 Route::resource('/admin', AdminController::class);
+// Route get => admin => index
+// Route get => admin/create => create
+// Route post => admin => store
+// Route get => admin/{id} => show
+// Route put/patch => admin/{id} => update
+// Route delete => admin/{id} => delete
+// Route get => admin/{id}/edit => edit
+

@@ -51,10 +51,9 @@
                         <label class="form-label">Penjualan ID</label>
                         <input type="number" class="form-control" name="penjualans_id" required="" placeholder="Ketik disini" /> 
                     </div>
-                        <div class="button-container">
-                            <button type="cancel" class="btn btn-secondary">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                        <button type="submit" class="btn btn-success" onclick="this.form.submit();">Simpan</button>
                     </div>
             </section>
         </form>

@@ -38,6 +38,11 @@ input[type="date"] {
     padding: 7px;
     border: 1px solid #FFA500;
 }
+input[type="password"] {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #FFA500;
+}
 
 .button-container [type="submit"] {
     margin-top: 20px;
@@ -45,7 +50,7 @@ input[type="date"] {
     padding: 5px;
 }
 
-.button-container [type="cancel"] {
+.button-container [type="button"] {
     margin-top: 20px;
     cursor: pointer;
     padding: 5px;

@@ -17,9 +17,9 @@ class CreateKeuangansTable extends Migration
             $table->id(); 
             $table->date('tanggal');
             $table->string('kode_keuangan');
-            $table->string('pemasukan');
-            $table->string('pengeluaran');
-            $table->string('saldo');
+            $table->float('pemasukan');
+            $table->float('pengeluaran');
+            $table->float('saldo');
             //$table->string('total');
             $table->timestamps();
             

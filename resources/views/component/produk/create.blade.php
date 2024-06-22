@@ -24,7 +24,7 @@
         <form method="POST" action="{{ url('produk') }}" enctype="multipart/form">
             @csrf
             <section class="base">
-                <div class="form"></div>
+                <div class="form">
                     <div>
                         <label for="kode_produk">Kode Produk</label>
                         <input type="text" id="form-control" name="kode_produk" autofocus="" required=""
@@ -51,11 +51,11 @@
                         <label class="form-label">Status</label>
                         <input type="text" id="form-control" name="status" required="" placeholder="Ketik disini" /> 
                     </div>
-                        <div class="button-container">
-                            <button type="cancel" class="btn btn-secondary">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                        <button type="submit" class="btn btn-success" onclick="this.form.submit();">Simpan</button>
                     </div>
+                </div>
             </section>
         </form>
 </div>
