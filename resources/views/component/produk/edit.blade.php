@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="tambah-data">
-        <h1>Edit Data Admin</h1>
+        <h1>Edit Data Produk</h1>
         <form method="POST" action="{{ url('produk/' . $produk->id) }}" enctype="multipart/form">
             @method('PATCH')    
             @csrf
