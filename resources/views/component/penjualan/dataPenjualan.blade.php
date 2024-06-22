@@ -36,12 +36,12 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">ID Penjualan</th>
-                        <th scope="col">Tanggal Penjualan</th>
+                        <th scope="col">Kode Penjualan</th>
+                        <th scope="col">Tanggal</th>
                         <th scope="col">List Produk</th>
                         <th scope="col">Total Harga</th>
                         <th scope="col">Metode Pembayaran</th>
-                        <th scope="col">Status Penjualan</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -50,17 +50,17 @@
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
-                            <td>{{ $item->nama_penjualan }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->no_telepon }}</td>
-                            <td>{{ $item->terakhir_pembelian }}</td>
-                            <td class="button-container">
-                                <a href="{{ url('/penjualan/edit', $item->id) }}" class="btn btn-primary">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href="{{ url('/penjualan/destroy', $item->id) }}" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                            <td>{{ $item->tanggal }}</td>
+                            <td>{{ $item->list_produk }}</td>
+                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ $item->metode_pembayaran }}</td>
+                            <td>{{ $item->status }}</td>
+                            <td>
+                                <form action="{{ url('penjualan/' . $item->id) }}" method="POST" class="d-inline">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

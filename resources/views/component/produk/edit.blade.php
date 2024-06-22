@@ -25,7 +25,7 @@
             <section class="base">
                 <div>
                     <label for="kode_produk">Kode Produk</label>
-                    <input type="text" id="form-control" name="kode_produk" value="{{ $produk->kode_produk }}" autofocus="" required="" placeholder="Ketik disini" />
+                    <input type="text" id="form-control" name="kode_produk" value="{{ $produk->kode_produk }}" autofocus="" required="" placeholder="Ketik disini" readonly />
                 </div>
                 <div>
                     <label class="form-label">Nama Produk</label>
