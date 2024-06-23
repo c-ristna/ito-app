@@ -93,6 +93,3 @@ Route::resource('/admin', AdminController::class);
 // Route put/patch => admin/{id} => update
 // Route delete => admin/{id} => delete
 // Route get => admin/{id}/edit => edit
-
-
-
