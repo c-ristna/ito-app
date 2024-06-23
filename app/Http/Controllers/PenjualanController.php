@@ -9,16 +9,22 @@ use App\Models\Penjualan;
 
 class PenjualanController extends Controller
   {
-    public function index() //halaman tabel
+    public function index(Request $request) //halaman tabel
     {
         $penjualan = DB::table('penjualans')
             ->join('konsumens', 'penjualans.konsumens_id', '=', 'konsumens.id')
             ->select('penjualans.*', 'konsumens.nama_konsumen')
             ->oldest()
             ->paginate(5);
-        return view('component/penjualan/dataPenjualan')->with('penjualan', $penjualan);
-    }
 
+            $keyword = $request->get('search');
+            \Log::info('Search keyword: ' . $keyword);
+            $penjualan = Penjualan::when($keyword, function ($query, $keyword) {
+              return $query->where('kode_penjualan', 'LIKE', "%{$keyword}%");
+            })->get();
+        
+            return view('component/penjualan/dataPenjualan', compact('penjualan', 'keyword'));
+          }
     public function create() //buat nampilin form nambah datanya
     {
       return view('component/penjualan/create');

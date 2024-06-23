@@ -9,11 +9,16 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     // Menampilkan halaman tabel
-    public function index()
+    public function index(Request $request)
     {
-        $admin = Admin::all();
-        return view('component/admin/dataAdmin', compact('admin'));
-    }
+    $keyword = $request->get('search');
+    \Log::info('Search keyword: ' . $keyword);
+    $admin = Admin::when($keyword, function ($query, $keyword) {
+      return $query->where('nama_admin', 'LIKE', "%{$keyword}%");
+    })->get();
+
+    return view('component/admin/dataAdmin', compact('admin', 'keyword'));
+  }
 
     // Menampilkan form untuk menambah data
     public function create()

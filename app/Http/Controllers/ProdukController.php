@@ -10,10 +10,15 @@ use App\Models\Produk;
 class ProdukController extends Controller
 {
     //
-    public function index() //halaman tabel
+    public function index(Request $request)
     {
-        $produk = Produk::all();
-        return view('component/produk/dataProduk')->with('produk', $produk);
+        $keyword = $request->get('search');
+        \Log::info('Search keyword: ' . $keyword);
+        $produk = Produk::when($keyword, function ($query, $keyword) {
+            return $query->where('nama_produk', 'LIKE', "%{$keyword}%");
+        })->get();
+
+        return view('component/produk/dataProduk', compact('produk', 'keyword'));
     }
     public function create() //buat nampilin form nambah datanya
     {

@@ -18,7 +18,16 @@
                     </a>
                 </ul>
             </div>
-            
+            <form action="{{ url('konsumen') }}" method="GET">
+                    <div class="search" style="margin-left: 10px;">
+                        <label>
+                            <input type="search" name="search" value="{{ $keyword }}" class= form-control,right,  placeholder="Cari di sini" aria-label="Cari">
+                            <ion-icon name="search-outline"></ion-icon>
+        
+                        </label>
+                    </div>
+                </form>
+            </ul>
         <div class="table-container">
             <table>
                 <thead>
