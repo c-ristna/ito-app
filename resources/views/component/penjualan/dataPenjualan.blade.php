@@ -48,7 +48,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $totalKeseluruhan = 0; @endphp
                     @foreach ($penjualan as $key => $item)
+                        @php $totalKeseluruhan += $item->total_harga; @endphp
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
@@ -56,18 +58,7 @@
                             <td>{{ is_array($item->list_produk) ? implode(', ', $item->list_produk) : $item->list_produk }}</td>
                             <td>{{ formatRupiah(floatval($item->total_harga)) }}</td>
                             <td>{{ $item->metode_pembayaran }}</td>
-                            <td class="{{ 'status ' . strtolower(str_replace(' ', '', $item->status)) }}">
-                                {{ $item->status }}
-                                @if ($item->status == 'pending')
-                                    <span class="status pending">Pending</span>
-                                @elseif ($item->status == 'delivered')
-                                    <span class="status delivered">Terkirim</span>
-                                @elseif ($item->status == 'return')
-                                    <span class="status return">Tertunda</span>
-                                @elseif ($item->status == 'inprocess')
-                                    <span class="status inprocess">Dalam Proses</span>
-                                @endif
-                            </td>
+                            <td class="{{ 'status ' . strtolower(str_replace(' ', '', $item->status)) }}">{{ $item->status }}</td>
                             <td>{{ $item->nama_konsumen }}</td>
                             <td class="button-container">
                                 <button class="btn btn-primary fas fa-pen-to-square" onclick="window.location.href='{{ url('penjualan/' . $item->id . '/edit') }}'"></button>
@@ -81,9 +72,12 @@
                             </td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="4" style="text-align: right;"><strong>Total Keseluruhan:</strong></td>
+                        <td colspan="6"><strong>{{ formatRupiah($totalKeseluruhan) }}</strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
-

@@ -28,7 +28,7 @@
           <div class="form">
             <div>
               <label class="form-label">Tanggal</label>
-              <input type="date" id="form-control" name="tanggal" value="{{ $keuangan->pemasukan }}" autofocus="" required="" placeholder="Ketik disini" readonly/>
+              <input type="date" id="form-control" name="tanggal" value="{{ $keuangan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
               <label for="kode_konsumen">Kode Keuangan</label>
@@ -36,7 +36,7 @@
             </div>
             <div>
               <label class="form-label">Pemasukan</label>
-              <input type="text" id="form-control" name="pemasukan" value="{{ $keuangan->pemasukan}}" autofocus="" required="" placeholder="Ketik disini" readonly/>
+              <input type="text" id="form-control" name="pemasukan" value="{{ $keuangan->pemasukan}}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
               <label class="form-label">Pengeluaran</label>

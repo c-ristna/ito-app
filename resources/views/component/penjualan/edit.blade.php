@@ -51,7 +51,7 @@
             </div>
             <div>
               <label class="form-label">Total Harga</label>
-              <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->total_harga }}" required="" placeholder="Ketik disini" />
+              <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->pemasukan }}" required="" placeholder="Ketik disini" />
             </div>
             <div class="form-group">
                         <label for="metode_pembayaran">Metode Pembayaran</label>
