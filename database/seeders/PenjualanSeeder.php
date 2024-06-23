@@ -17,7 +17,8 @@ class PenjualanSeeder extends Seeder
         //
         DB::table('penjualans')->insert([
             [
-                'tanggal_penjualan' => '10/06/2024',
+                'tanggal' => '10/06/2024',
+                'kode_penjualan' => 'PJ001',
                 'list_produk' => '5',
                 'total_harga' => '100.000',
                 'metode_pembayaran' => 'Cash', 
