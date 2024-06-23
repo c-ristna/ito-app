@@ -1,6 +1,6 @@
 @extends('template_backend.home2')
 
-@section('halaman', 'Edit Data Konsumen')
+@section('halaman', 'Edit Data')
 
 @section('content')
 @if (Session::has('success'))

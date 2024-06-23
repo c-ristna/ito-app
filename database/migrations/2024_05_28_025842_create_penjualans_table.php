@@ -16,17 +16,18 @@ class CreatePenjualansTable extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            $table->json('list_produk');
+            $table->string('kode_penjualan', 30);
+            $table->text('list_produk')->nullable(); // Mengubah tipe data menjadi text untuk menghindari eror konversi array ke string
             $table->float('total_harga');
             $table->string('metode_pembayaran', 20);
             $table->string('status', 20);
             $table->unsignedBigInteger('konsumens_id');
-            $table->unsignedBigInteger('produks_id');
+            //$table->unsignedBigInteger('produks_id');
             $table->timestamps();
 
             // Define foreign keys
             $table->foreign('konsumens_id')->references('id')->on('konsumens');
-            $table->foreign('produks_id')->references('id')->on('produks');
+            //$table->foreign('produks_id')->references('id')->on('produks');
         });
     }
 

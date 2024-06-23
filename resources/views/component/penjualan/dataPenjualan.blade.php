@@ -5,6 +5,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/tabel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/data.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endpush
 
@@ -24,13 +25,13 @@
     <div class="customer"></div>
     <h2 class="main--title">Data Penjualan</h2>
     <div class="tabular--wrapper">
-    <div class="row-button">
-                <ul class="left">
-                    <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
-                        <i class="fa fa-plus"></i> Tambah
-                    </a>
-                </ul>
-            </div>
+        <div class="row-button">
+            <ul class="left">
+                <a class="tambah" name="tambah" href="{{ url('/penjualan/create') }}">
+                    <i class="fas fa-plus"></i> Tambah
+                </a>
+            </ul>
+        </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -42,7 +43,8 @@
                         <th scope="col">Total Harga</th>
                         <th scope="col">Metode Pembayaran</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Nama Konsumen</th>
+                        <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,16 +52,31 @@
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
-                            <td>{{ $item->tanggal }}</td>
-                            <td>{{ $item->list_produk }}</td>
-                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
+                            <td>{{ is_array($item->list_produk) ? implode(', ', $item->list_produk) : $item->list_produk }}</td>
+                            <td>{{ formatRupiah(floatval($item->total_harga)) }}</td>
                             <td>{{ $item->metode_pembayaran }}</td>
-                            <td>{{ $item->status }}</td>
+                            <td class="{{ 'status ' . strtolower(str_replace(' ', '', $item->status)) }}">
+                                {{ $item->status }}
+                                @if ($item->status == 'pending')
+                                    <span class="status pending">Pending</span>
+                                @elseif ($item->status == 'delivered')
+                                    <span class="status delivered">Terkirim</span>
+                                @elseif ($item->status == 'return')
+                                    <span class="status return">Tertunda</span>
+                                @elseif ($item->status == 'inprocess')
+                                    <span class="status inprocess">Dalam Proses</span>
+                                @endif
+                            </td>
+                            <td>{{ $item->nama_konsumen }}</td>
+                            <td class="button-container">
+                                <button class="btn btn-primary fas fa-pen-to-square" onclick="window.location.href='{{ url('penjualan/' . $item->id . '/edit') }}'"></button>
+                            </td>
                             <td>
                                 <form action="{{ url('penjualan/' . $item->id) }}" method="POST" class="d-inline">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                    <button class="btn btn-danger fas fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
                                 </form>
                             </td>
                         </tr>
@@ -69,3 +86,4 @@
         </div>
     </div>
 @endsection
+

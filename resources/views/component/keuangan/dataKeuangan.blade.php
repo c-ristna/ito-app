@@ -45,32 +45,39 @@
                             <th scope="col">Pemasukan</th>
                             <th scope="col">Pengeluaran</th>
                             <th scope="col">Saldo</th>
-                            <th scope="col">Aksi</th>
+                            <!-- <th scope="col">Total Semua Saldo</th> -->
+                            <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php $total_saldo = 0; @endphp
                         @foreach ($keuangan as $key => $item)
+                            @php $total_saldo = floatval($item->pemasukan) - floatval($item->pengeluaran); @endphp
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $item->tanggal }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
                                 <td>{{ $item->kode_keuangan }}</td>
-                                <td>{{ $item->pemasukan }}</td>
-                                <td>{{ $item->pengeluaran }}</td>
-                                <td>{{ $item->saldo }}</td>
+                                <td>{{ formatRupiah(floatval($item->pemasukan)) }}</td>
+                                <td>{{ formatRupiah(floatval($item->pengeluaran)) }}</td>
+                                <td>{{ formatRupiah(floatval($item->pemasukan) - floatval($item->pengeluaran)) }}</td>
+                            
                                 <td class="button-container">
-                                    <button>
-                                        <a href="{{ url('/keuangan/edit', $item->id) }}">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
-                                    </button>
-                                    <button>
-                                        <a href="{{ url('/keuangan/destroy', $item->id) }}">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </button>
+                                    <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('keuangan/' . $item->id . '/edit') }}'"></button>
+                                </td>
+                                <td>
+                                    <form action="{{ url('keuangan/' . $item->id) }}" method="POST" class="d-inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td colspan="6" style="text-align: right;"><strong>Total Keseluruhan Saldo:</strong></td>
+                            <td><strong>{{ formatRupiah($total_saldo += $total_saldo) }}</strong></td>
+                            <td colspan="2"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -82,4 +89,3 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-

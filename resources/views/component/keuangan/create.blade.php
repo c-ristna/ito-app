@@ -21,36 +21,47 @@
     <body>
         <div class="tambah-data">
             <h1>Tambah Data Keuangan</h1>
-        <form method="POST" action="{{ url('keuangan/store') }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('keuangan') }}" enctype="multipart/form">
             @csrf
             <section class="base">
                 <div class="form"></div>
+                    <div>
+                        <label class="form-label">Tanggal</label>
+                        <input type="date" id="form-control" name="tanggal" autofocus="" required=""
+                            placeholder="Ketik disini" />
+                    </div>
                     <div>
                         <label for="kode_keuangan">Kode Keuangan</label>
                         <input type="text" id="form-control" name="kode_keuangan" autofocus="" required=""
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Nama Konsumen</label>
-                        <input type="text" id="form-control" name="nama_konsumen" autofocus="" required=""
-                            placeholder="Ketik disini" />
+                        <label class="form-label">Pemasukan</label>
+                        <input type="text" id="form-control" name="pemasukan" required="" placeholder="Ketik disini" />
+                    </div>
+                    <!-- <div>
+                        <label class="form-label">Pemasukan</label>
+                        <select class="form-control" name="pemasukan" required="">
+                            @foreach ($penjualans as $penjualan)
+                                <option value="{{ $penjualan->total_harga }}">{{ formatRupiah($penjualan->total_harga) }}</option>
+                            @endforeach
+                        </select>
+                    </div> -->
+                    <div>
+                        <label class="form-label">Pengeluaran</label>
+                        <input type="text" id="form-control" name="pengeluaran" required="" placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">Alamat</label>
-                        <input type="text" id="form-control" name="alamat" required="" placeholder="Ketik disini" />
+                        <label class="form-label">Saldo</label>
+                        <input type="text" id="form-control" name="saldo" value="{{ old('pemasukan') - old('pengeluaran') }}" required="" placeholder="Ketik disini" readonly /> <br>
                     </div>
                     <div>
-                        <label class="form-label">No Telepon</label>
-                        <input type="text" id="form-control" name="no_telepon" required="" placeholder="Ketik disini" />
+                        <label class="form-label">Penjualan ID</label>
+                        <input type="number" class="form-control" name="penjualans_id" required="" placeholder="Ketik disini" /> 
                     </div>
-                    <div>
-                        <label class="form-label">Terakhir Pembelian</label>
-                        <input type="date" id="form-control" name="terakhir_pembelian" required="" /> <br>
-                    </div>
-                        <div class="button-container">
-                            <button type="cancel" class="btn btn-secondary">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                        <button type="submit" class="btn btn-success" onclick="this.form.submit();">Simpan</button>
                     </div>
             </section>
         </form>

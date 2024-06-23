@@ -13,7 +13,6 @@ class ProdukController extends Controller
     public function index() //halaman tabel
     {
         $produk = Produk::all();
-        // return $konsumen;
         return view('component/produk/dataProduk')->with('produk', $produk);
     }
     public function create() //buat nampilin form nambah datanya

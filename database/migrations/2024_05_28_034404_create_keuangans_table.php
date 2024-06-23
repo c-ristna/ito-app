@@ -20,10 +20,10 @@ class CreateKeuangansTable extends Migration
             $table->float('pemasukan');
             $table->float('pengeluaran');
             $table->float('saldo');
-            $table->float('total');
             $table->timestamps();
-
-        //    $table->foreignId('penjualan_id')->constrained('penjualan');
+            
+            $table->unsignedBigInteger('penjualans_id')->nullable();
+            $table->foreign('penjualans_id')->references('id')->on('penjualans');
         });
     }
 

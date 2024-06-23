@@ -8,57 +8,77 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Penjualan;
 
 class PenjualanController extends Controller
-{
-    public function index() //halaman tabel
-    {
-        $penjualan = Penjualan::all();
-        // return $konsumen;
-        return view('component/penjualan/dataPenjualan')->with('penjualan', $penjualan);
-    }
-    public function create() //buat nampilin form nambah datanya
-    {
-        return view('component/penjualan/create');
-    }
-
-    public function show($id)
-    {
-   //
-    }
-    public function edit($id)
-    {
-        $penjualan = Penjualan::findorfail($id);
-        return view('component/penjualan/edit', compact('penjualan'));
-    }
-    public function store(Request $request) //buat simpan data
-    {
-      Penjualan::create([
-        'kode_penjualan'         => $request->kode_konsumen,
-        'nama_konsumen'         => $request->nama_konsumen,
-        'alamat'                => $request->alamat,
-        'no_telepon'            => $request->no_telepon,
-        'terakhir_pembelian'    => $request->terakhir_pembelian,
-      ]);
-      return redirect('penjualan')->with('status', 'Data Penjualan Berhasil ditambahkan!');
+  {
+      public function index() //halaman tabel
+      {
+          $penjualan = DB::table('penjualans')
+              ->join('konsumens', 'penjualans.konsumens_id', '=', 'konsumens.id')
+              ->select('penjualans.*', 'konsumens.nama_konsumen')
+              ->oldest()
+              ->paginate(5);
+          return view('component/penjualan/dataPenjualan')->with('penjualan', $penjualan);
       }
 
+      public function create() //buat nampilin form nambah datanya
+      {
+        return view('component/penjualan/create');
+      }
+  
+      public function show($id)
+      {
+          //
+      }
+  
+      public function edit($id)
+      {
+        $penjualan = Penjualan::findOrFail($id);
+        return view('component/penjualan/edit', compact('penjualan'));
+      }
+  
+      public function store(Request $request) //buat simpan data
+      {
+          Penjualan::create([
+              'kode_penjualan'        => $request->kode_penjualan,
+              'tanggal'               => $request->tanggal,
+              'list_produk'           => $request->list_produk,
+              'total_harga'           => $request->total_harga,
+              'metode_pembayaran'     => $request->metode_pembayaran,
+              'status'                => $request->status,
+              'konsumens_id'          => $request->konsumens_id,
+          ]);
+  
+        return redirect('penjualan')->with('status', 'Data Penjualan Berhasil ditambahkan!');
+      }
+  
       public function update(Request $request, $id)
       {
-          $record = Penjualan::find($id);
-      
+          $penjualan = Penjualan::findOrFail($id);
+  
           $validatedData = $request->validate([
-            'kode_penjualan'         => $request->kode_penjualan, 
-            'nama_penjualan'         => $request->nama_penjualan,
-            'alamat'                => $request->alamat,
-            'no_telepon'            => $request->no_telepon,
-            'terakhir_pembelian'    => $request->terakhir_pembelian,
+              'kode_penjualan'        => 'required',
+              'tanggal'               => 'required|date',
+              'list_produk'           => 'required|array',
+              'total_harga'           => 'required|numeric',
+              'metode_pembayaran'     => 'required|string',
+              'status'                => 'required|string',
+              'konsumens_id'          => 'required|integer',
           ]);
-      
-          $record->fill($validatedData);
-          $record->save();
-      
-          return redirect('penjualan')->with('status', 'Data Penjualan Berhasil diperbarui!');
-      }    
-      function detail(){
+  
+          $penjualan->update($validatedData);
+  
+          return redirect('penjualan')->with('status', 'Data Penjualan berhasil diperbarui!');
+      }
 
-    }
-}
+      public function destroy($id)
+      {
+          $penjualan = Penjualan::findOrFail($id);
+          $penjualan->delete();
+  
+          return redirect('penjualan')->with('status');
+      }
+  
+      public function detail()
+      {
+          // Method implementation here
+      }
+  }

@@ -31,7 +31,7 @@ Route::get('/', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
+    $total_saldo = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->sum('saldo');
 
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
@@ -39,7 +39,7 @@ Route::get('/', function () {
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
 });
 
 Route::get('dashboard', function () {
@@ -47,7 +47,7 @@ Route::get('dashboard', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
+    $total_saldo = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->sum('saldo');
 
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
@@ -55,7 +55,7 @@ Route::get('dashboard', function () {
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
 });
 
 // Route::get('home', function () {
@@ -66,6 +66,7 @@ Route::resource('/login', LoginController::class);
 Route::resource('/logout', LoginController::class);
 
 Route::resource('/konsumen', KonsumenController::class);
+
 // Route get => konsumen => index
 // Route get => konsumen/create => create
 // Route post => konsumen => store
