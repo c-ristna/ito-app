@@ -30,7 +30,8 @@ class KeuanganController extends Controller
     {
         $penjualans = Penjualan::all(); // Retrieve all penjualans
         return view('component/keuangan/create', compact('penjualans'));
-}
+    }
+
     public function show($id)
     {
    //
@@ -57,12 +58,15 @@ class KeuanganController extends Controller
 
         return redirect('keuangan')->with('status');
     }
-    public function destroy($id, Request $request)
-    {
-        //
-    }
+    
     public function store(Request $request) //buat simpan data
     {
+        // Memastikan bahwa penjualans_id ada di database sebelum menciptakan data keuangan
+        $penjualan = Penjualan::find($request->penjualans_id);
+        if (!$penjualan) {
+            return redirect('keuangan/create')->withErrors(['penjualans_id' => 'ID Penjualan tidak valid.']);
+        }
+
         Keuangan::create([
             'tanggal'            => $request->tanggal,
             'kode_keuangan'      => $request->kode_keuangan,
@@ -71,10 +75,19 @@ class KeuanganController extends Controller
             'saldo'              => $request->saldo,
             'penjualans_id'      => $request->penjualans_id,
         ]);
+        return redirect('keuangan')->with('status', 'Data keuangan berhasil disimpan.');
+    }
+
+    public function destroy($id, Request $request)
+    {
+        $keuangan = Keuangan::findOrFail($id);
+        $keuangan->delete();
+
         return redirect('keuangan')->with('status');
     }
-    function detail(){
 
+    function detail()
+    {
+        //
     }
 }
-

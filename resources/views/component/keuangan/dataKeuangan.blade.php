@@ -45,20 +45,23 @@
                             <th scope="col">Pemasukan</th>
                             <th scope="col">Pengeluaran</th>
                             <th scope="col">Saldo</th>
-                            <th scope="col">Total Harga Penjualan</th>
                             <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($keuangan as $key => $item)
+                        @php $total_saldo = 0; @endphp
+                        @foreach ($keuangan->take(100) as $key => $item)
+                            @php
+                                $saldo = floatval($item->pemasukan) + floatval($item->total_harga) - floatval($item->pengeluaran);
+                                $total_saldo += $saldo;
+                            @endphp
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
                                 <td>{{ $item->kode_keuangan }}</td>
-                                <td>{{ formatRupiah (floatval($item->pemasukan)) }}</td>
-                                <td>{{ formatRupiah (floatval($item->pengeluaran)) }}</td>
-                                <td>{{ formatRupiah (floatval($item->saldo)) }}</td>
-                                <td>{{ formatRupiah (floatval($item->total_harga)) }}</td>
+                                <td>{{ formatRupiah(floatval($item->pemasukan) + floatval($item->total_harga)) }}</td>
+                                <td>{{ formatRupiah(floatval($item->pengeluaran)) }}</td>
+                                <td>{{ formatRupiah($saldo) }}</td>
                                 <td class="button-container">
                                     <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('keuangan/' . $item->id . '/edit') }}'"></button>
                                 </td>
@@ -71,6 +74,12 @@
                                 </td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td colspan="5" style="text-align: right;"><strong>Total Keseluruhan Saldo:</strong></td>
+                            <td colspan="3">
+                                <strong>{{ formatRupiah($total_saldo) }}</strong>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -82,4 +91,3 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-

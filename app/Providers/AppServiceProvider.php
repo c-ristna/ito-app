@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Providers\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Validator::extend('PJ001', function ($attribute, $value, $parameters, $validator) {
+        //     // Logika validasi Anda
+        //     return true; // atau false berdasarkan kondisi
+        // });
     }
 }

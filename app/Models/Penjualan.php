@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasFormatRupiah;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 class Penjualan extends Model
 {
     use HasFactory;
@@ -29,3 +31,4 @@ class Penjualan extends Model
         'list_produk' => 'array'
     ];
 }
+

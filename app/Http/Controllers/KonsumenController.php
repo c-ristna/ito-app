@@ -13,7 +13,7 @@ class KonsumenController extends Controller
     $keyword = $request->get('search');
     \Log::info('Search keyword: ' . $keyword);
     $konsumen = Konsumen::when($keyword, function ($query, $keyword) {
-      return $query->where('nama_konsumen', 'LIKE', "%{$keyword}%");
+      return $query->where('kode_konsumen', 'LIKE', "%{$keyword}%");
     })->get();
 
     return view('component/konsumen/dataKonsumen', compact('konsumen', 'keyword'));
@@ -26,15 +26,15 @@ class KonsumenController extends Controller
 
   public function store(Request $request) //buat simpan data
   {
-      $konsumen = new Konsumen;
-      $konsumen->kode_konsumen = $request->kode_konsumen;
-      $konsumen->nama_konsumen = $request->nama_konsumen;
-      $konsumen->alamat = $request->alamat;
-      $konsumen->no_telepon = $request->no_telepon;
-      $konsumen->terakhir_pembelian = $request->terakhir_pembelian;
-      $konsumen->save();
+      Konsumen::create([
+          'kode_konsumen'        => $request->kode_konsumen,
+          'nama_konsumen'        => $request->nama_konsumen,
+          'alamat'               => $request->alamat,
+          'no_telepon'           => $request->no_telepon,
+          'terakhir_pembelian'   => $request->terakhir_pembelian,
+      ]);
 
-      return redirect('konsumen');
+      return redirect('konsumen')->with('status', 'Data Konsumen Berhasil ditambahkan!');
   }
 
   public function edit($id)
@@ -48,11 +48,11 @@ class KonsumenController extends Controller
       $record = Konsumen::find($id);
 
       $validatedData = $request->validate([
-        'kode_konsumen' => 'required',
-        'nama_konsumen' => 'required',
-        'alamat' => 'required',
-        'no_telepon' => 'required',
-        'terakhir_pembelian' => 'required',
+        'kode_konsumen'       => 'required',
+        'nama_konsumen'       => 'required',
+        'alamat'              => 'required',
+        'no_telepon'          => 'required',
+        'terakhir_pembelian'  => 'required',
       ]);
 
       $record->fill($validatedData);

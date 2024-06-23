@@ -45,7 +45,7 @@
                     </div>
                     <div>
                         <label class="form-label">Saldo</label>
-                        <input type="text" id="form-control" name="saldo" required="" /> <br>
+                        <input type="text" id="form-control" name="saldo" value="{{ old('pemasukan') - old('pengeluaran') }}" required="" placeholder="Ketik disini" readonly /> <br>
                     </div>
                     <div>
                         <label class="form-label">Penjualan ID</label>

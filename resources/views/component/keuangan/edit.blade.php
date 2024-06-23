@@ -28,7 +28,7 @@
           <div class="form">
             <div>
               <label class="form-label">Tanggal</label>
-              <input type="date" id="form-control" name="tanggal" value="{{ $keuangan->pemasukan }}" autofocus="" required="" placeholder="Ketik disini" />
+              <input type="date" id="form-control" name="tanggal" value="{{ $keuangan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
               <label for="kode_konsumen">Kode Keuangan</label>
@@ -36,7 +36,7 @@
             </div>
             <div>
               <label class="form-label">Pemasukan</label>
-              <input type="text" id="form-control" name="pemasukan" value="{{ $keuangan->pemasukan }}" autofocus="" required="" placeholder="Ketik disini" />
+              <input type="text" id="form-control" name="pemasukan" value="{{ $keuangan->pemasukan}}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
               <label class="form-label">Pengeluaran</label>
@@ -44,15 +44,15 @@
             </div>
             <div>
               <label class="form-label">Saldo</label>
-              <input type="text" id="form-control" name="saldo" value="{{ $keuangan->saldo }}" required="" placeholder="Ketik disini" />
+              <input type="text" id="form-control" name="saldo" value="{{ $keuangan->pemasukan - $keuangan->pengeluaran }}" required="" placeholder="Ketik disini" readonly />
             </div>
             <div>
             <label class="form-label">Penjualans ID</label>
-              <input type="number" id="form-control" name="penjualans_id" value="{{ $keuangan->penjualans_id }}" required="" /> <br>
+              <input type="number" id="form-control" name="penjualans_id" value="{{ $keuangan->penjualans_id }}" required=""/> <br>
             </div>
             <div class="button-container">
-                            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
-                            <button type="submit" class="btn btn-success" onclick="return confirm('Apakah Anda yakin ingin menyimpan perubahan?');">Simpan</button>
+              <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+              <button type="submit" class="btn btn-success" onclick="return confirm('Apakah Anda yakin ingin menyimpan perubahan?');">Simpan</button>
             </div>
           </div>
         </section>

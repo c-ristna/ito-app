@@ -15,10 +15,10 @@ class CreateKonsumensTable extends Migration
     {
         Schema::create('konsumens', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_konsumen')->nullable();
+            $table->string('kode_konsumen', 30)->nullable();
             $table->string('nama_konsumen')->nullable();
             $table->text('alamat')->nullable();
-            $table->string('no_telepon')->nullable();
+            $table->string('no_telepon', 30)->nullable();
             $table->date('terakhir_pembelian')->nullable();
             $table->timestamps();
         });

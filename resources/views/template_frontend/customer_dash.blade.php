@@ -6,8 +6,8 @@
         <tbody>
             @forelse ($konsumen as $key => $item)
                 <tr>
-                    <td>
-                        <div class="imgBx"><img src="{{ asset('assets/imgs/icon_people.jpg') }}" alt="{{ $item->nama_konsumen }}"></div>
+                    <td width="60px">
+                        <div class="imgBx"><img src="{{ asset('assets/imgs/icon_people2.jpg') }}" alt="{{ $item->nama_konsumen }}"></div>
                     </td>
                     <td>
                         <h4>{{ $item->nama_konsumen }} <br> <span>{{ $item->alamat }}</span></h4>

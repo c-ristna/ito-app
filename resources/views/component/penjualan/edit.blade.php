@@ -32,27 +32,26 @@
             </div>
             <div>
               <label class="form-label">Tanggal</label>
-              <input type="date" id="form-control" name="tanggal" value="{{ $penjualan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" />
+              <input type="date" id="form-control" name="tanggal" value="{{ $penjualan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" readonly/>
             </div>
             <div>
-              <label for="list_produk">List Produk</label>
+              <label class="form-label">List Produk</label>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Puding" id="puding">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Puding" id="puding" {{ is_array($penjualan->list_produk) && in_array('Puding', $penjualan->list_produk) ? 'checked' : '' }}>
                 <label class="form-check-label" for="puding">Puding</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Keripik pisang" id="keripik_pisang">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Keripik pisang" id="keripik_pisang" {{ is_array($penjualan->list_produk) && in_array('Keripik pisang', $penjualan->list_produk) ? 'checked' : '' }}>
                 <label class="form-check-label" for="keripik_pisang">Keripik Pisang</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Makaroni" id="makaroni">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Makaroni" id="makaroni" {{ is_array($penjualan->list_produk) && in_array('Makaroni', $penjualan->list_produk) ? 'checked' : '' }}>
                 <label class="form-check-label" for="makaroni">Makaroni</label>
               </div>
-              <!-- Add more options as needed -->
             </div>
               <div>
               <label class="form-label">Total Harga</label>
-              <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->total_harga }}" required="" placeholder="Ketik disini" />
+              <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->pemasukan }}" required="" placeholder="Ketik disini" />
             </div>
             <div class="form-group">
                         <label for="metode_pembayaran">Metode Pembayaran</label>
@@ -66,12 +65,14 @@
             </div>
             <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" id="status" required>
+                        <select name="status" id="status" class="form-control status" required>
                             <option value="">Pilih Status Penjualan</option>
-                            <option value="Terkirim">Terkirim</option>
-                            <option value="Tertunda">Tertunda</option>
-                            <!-- Add more options as needed -->
+                            <option value="Terkirim" class="delivered">Terkirim</option>
+                            <option value="Tertunda" class="pending">Tertunda</option>
+                            <option value="Dikembalikan" class="return">Dikembalikan</option>
+                            <option value="Sedang Diproses" class="inProgress">Sedang Diproses</option>
                         </select>
+                    </div>
             </div>
             <div>
             <label class="form-label">Konsumens ID</label>

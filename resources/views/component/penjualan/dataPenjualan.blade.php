@@ -5,6 +5,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/tabel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/data.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 @endpush
 
@@ -42,31 +43,22 @@
                         <th scope="col">Total Harga</th>
                         <th scope="col">Metode Pembayaran</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Konsumen</th>
+                        <th scope="col">Nama Konsumen</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php $totalKeseluruhan = 0; @endphp
                     @foreach ($penjualan as $key => $item)
+                        @php $totalKeseluruhan += $item->total_harga; @endphp
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
-                            <td>
-                            @php
-                                    $produkList = json_decode($item->list_produk, true);
-                                @endphp
-                                @if(is_array($produkList))
-                                    @foreach($produkList as $produk)
-                                        {{ str_replace('\\', '', $produk) }}<br>
-                                    @endforeach
-                                @else
-                                    {{ str_replace(['[', ']', '"', '\\'], '', $item->list_produk) }}
-                                @endif
-                            </td>
-                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ is_array($item->list_produk) ? implode(', ', $item->list_produk) : $item->list_produk }}</td>
+                            <td>{{ formatRupiah(floatval($item->total_harga)) }}</td>
                             <td>{{ $item->metode_pembayaran }}</td>
-                            <td>{{ $item->status }}</td>
+                            <td class="{{ 'status ' . strtolower(str_replace(' ', '', $item->status)) }}">{{ $item->status }}</td>
                             <td>{{ $item->nama_konsumen }}</td>
                             <td class="button-container">
                                 <button class="btn btn-primary fas fa-pen-to-square" onclick="window.location.href='{{ url('penjualan/' . $item->id . '/edit') }}'"></button>
@@ -75,11 +67,15 @@
                                 <form action="{{ url('penjualan/' . $item->id) }}" method="POST" class="d-inline">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                    <button class="btn btn-danger fas fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="4" style="text-align: right;"><strong>Total Keseluruhan:</strong></td>
+                        <td colspan="6"><strong>{{ formatRupiah($totalKeseluruhan) }}</strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

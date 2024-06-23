@@ -15,7 +15,7 @@ class ProdukController extends Controller
         $keyword = $request->get('search');
         \Log::info('Search keyword: ' . $keyword);
         $produk = Produk::when($keyword, function ($query, $keyword) {
-            return $query->where('nama_produk', 'LIKE', "%{$keyword}%");
+            return $query->where('kode_produk', 'LIKE', "%{$keyword}%");
         })->get();
 
         return view('component/produk/dataProduk', compact('produk', 'keyword'));

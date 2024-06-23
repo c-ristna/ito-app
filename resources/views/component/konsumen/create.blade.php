@@ -21,7 +21,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>3
+<body>
   <div class="tambah-data">
     <h1>Tambah Data Konsumen</h1>
     <form method="POST" action="{{ url('konsumen') }}" enctype="multipart/form">

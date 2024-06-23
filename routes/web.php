@@ -31,15 +31,18 @@ Route::get('/', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
-
+    $penjualan = Penjualan::whereDate('created_at', now()->format('Y-m-d'))->get();
+    $total_saldo = 0;
+    foreach ($penjualan as $item) {
+        $total_saldo += $item->total_harga;
+    }
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
 });
 
 Route::get('dashboard', function () {
@@ -47,15 +50,18 @@ Route::get('dashboard', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
-
+    $penjualan = Penjualan::whereDate('created_at', now()->format('Y-m-d'))->get();
+    $total_saldo = 0;
+    foreach ($penjualan as $item) {
+        $total_saldo += $item->total_harga;
+    }
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
 });
 
 // Route::get('home', function () {
@@ -87,4 +93,6 @@ Route::resource('/admin', AdminController::class);
 // Route put/patch => admin/{id} => update
 // Route delete => admin/{id} => delete
 // Route get => admin/{id}/edit => edit
+
+
 

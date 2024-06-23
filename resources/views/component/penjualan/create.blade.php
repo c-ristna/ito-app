@@ -36,7 +36,7 @@
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label for="list_produk">List Produk</label>
+                        <label class="form-label">List Produk</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="list_produk[]" value="Puding" id="puding">
                             <label class="form-check-label" for="puding">Puding</label>
@@ -49,7 +49,6 @@
                             <input class="form-check-input" type="checkbox" name="list_produk[]" value="Makaroni" id="makaroni">
                             <label class="form-check-label" for="makaroni">Makaroni</label>
                         </div>
-                        <!-- Add more options as needed -->
                     </div>
                     <div>
                         <label class="form-label">Total Harga</label>
@@ -67,10 +66,12 @@
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select name="status" id="status" required>
+                        <select name="status" id="status" class="form-control status" required>
                             <option value="">Pilih Status Penjualan</option>
-                            <option value="Terkirim">Terkirim</option>
-                            <option value="Tertunda">Tertunda</option>
+                            <option value="Terkirim" class="delivered">Terkirim</option>
+                            <option value="Tertunda" class="pending">Tertunda</option>
+                            <option value="Dikembalikan" class="return">Dikembalikan</option>
+                            <option value="Sedang Diproses" class="inProgress">Sedang Diproses</option>
                         </select>
                     </div>
                     <div>

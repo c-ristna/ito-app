@@ -12,6 +12,7 @@
 <!doctype html>
 <html lang="en">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,6 +62,8 @@
   </body>
 </html>
 =======
+=======
+>>>>>>> dc12f71c3d632f9b9754432412448774c3e0b57b
 
 <head>
   <meta charset="utf-8">
@@ -121,4 +124,7 @@
 </body>
 
 </html>
+<<<<<<< HEAD
 >>>>>>> 63bbd449add966512746f91b46ae7afcaac0cac9
+=======
+>>>>>>> dc12f71c3d632f9b9754432412448774c3e0b57b
