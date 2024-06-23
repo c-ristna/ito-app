@@ -31,8 +31,12 @@ Route::get('/', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    $total_saldo = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->sum(DB::raw('REPLACE(saldo, "Rp. ", "")'));
-
+    $keuangan = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->get();
+    $total_saldo = $keuangan->reduce(function ($carry, $item) {
+        $pemasukan = floatval(str_replace("Rp. ", "", $item->pemasukan));
+        $pengeluaran = floatval(str_replace("Rp. ", "", $item->pengeluaran));
+        return $carry + ($pemasukan - $pengeluaran);
+    }, 0);
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
@@ -47,8 +51,12 @@ Route::get('dashboard', function () {
     $total_konsumen = Konsumen::count();
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
-    $total_saldo = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->sum(DB::raw('REPLACE(saldo, "Rp. ", "")'));
-
+    $keuangan = Keuangan::whereDate('created_at', now()->format('Y-m-d'))->get();
+    $total_saldo = $keuangan->reduce(function ($carry, $item) {
+        $pemasukan = floatval(str_replace("Rp. ", "", $item->pemasukan));
+        $pengeluaran = floatval(str_replace("Rp. ", "", $item->pengeluaran));
+        return $carry + ($pemasukan - $pengeluaran);
+    }, 0);
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
