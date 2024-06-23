@@ -15,10 +15,10 @@ class CreatePenjualansTable extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
-            $table->string('kode_penjualan', 30);
-            $table->text('list_produk')->nullable(); // Mengubah tipe data menjadi text untuk menghindari eror konversi array ke string
-            $table->float('total_harga');
+            $table->string('kode_penjualan')->nullable();
+            $table->date('tanggal')->nullable();
+            $table->json('list_produk')->nullable();
+            $table->float('total_harga')->nullable();
             $table->string('metode_pembayaran', 20);
             $table->string('status', 20);
             $table->unsignedBigInteger('konsumens_id');

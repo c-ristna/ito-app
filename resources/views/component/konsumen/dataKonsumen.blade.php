@@ -18,6 +18,7 @@
                     </a>
                 </ul>
             </div>
+            </ul>
         <div class="table-container">
             <table>
                 <thead>

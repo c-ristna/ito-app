@@ -49,7 +49,7 @@
                 <label class="form-check-label" for="makaroni">Makaroni</label>
               </div>
             </div>
-            <div>
+              <div>
               <label class="form-label">Total Harga</label>
               <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->pemasukan }}" required="" placeholder="Ketik disini" />
             </div>

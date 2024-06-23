@@ -48,7 +48,7 @@
             </div>
             <div>
             <label class="form-label">Penjualans ID</label>
-              <input type="number" id="form-control" name="penjualans_id" value="{{ $keuangan->penjualans_id }}" required="" readonly/> <br>
+              <input type="number" id="form-control" name="penjualans_id" value="{{ $keuangan->penjualans_id }}" required=""/> <br>
             </div>
             <div class="button-container">
               <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>

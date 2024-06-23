@@ -10,15 +10,22 @@ use App\Models\Penjualan;
 
 class KeuanganController extends Controller
 {
-    public function index() //halaman tabel
+    public function index(Request $request) //halaman tabel
     {
         $keuangan = DB::table('keuangans')
             ->join('penjualans', 'keuangans.penjualans_id', '=', 'penjualans.id')
             ->select('keuangans.*', 'penjualans.total_harga')
-            ->oldest()
-            ->paginate();
-        return view('component/keuangan/dataKeuangan')->with('keuangan', $keuangan);
-    }
+            ->latest()
+            ->paginate(5);
+
+        $keyword = $request->get('search');
+            \Log::info('Search keyword: ' . $keyword);
+            $keuangan = Keuangan::when($keyword, function ($query, $keyword) {
+              return $query->where('kode_keuangan', 'LIKE', "%{$keyword}%");
+            })->get();
+        
+            return view('component/keuangan/dataKeuangan', compact('keuangan', 'keyword'));
+          }
     public function create() // Display form to add new keuangan data
     {
         $penjualans = Penjualan::all(); // Retrieve all penjualans
