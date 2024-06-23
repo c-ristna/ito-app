@@ -10,7 +10,9 @@
 <body>
     <div class="container-logout">
         <form action="logout.php" method="POST" class="login-email">
-            <h1>Selamat Datang, </h1>
+            <h1>
+                Selamat Datang, 
+            </h1>
         </form>
     </div>
 </body>

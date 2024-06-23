@@ -18,6 +18,7 @@
                     </a>
                 </ul>
             </div>
+            
         <div class="table-container">
             <table>
                 <thead>
@@ -39,7 +40,7 @@
                             <td>{{ $item->nama_konsumen }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->no_telepon }}</td>
-                            <td>{{ $item->terakhir_pembelian }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->terakhir_pembelian)->format('d-m-Y') }}</td>
                             <td class="button-container">
                                 <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('konsumen/' . $item->id . '/edit') }}'"></button>
                             </td>

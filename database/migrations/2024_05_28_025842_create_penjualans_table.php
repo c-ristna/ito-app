@@ -17,7 +17,7 @@ class CreatePenjualansTable extends Migration
             $table->id();
             $table->string('kode_penjualan')->nullable();
             $table->date('tanggal')->nullable();
-            $table->string('list_produk');
+            $table->json('list_produk')->nullable();
             $table->float('total_harga')->nullable();
             $table->string('metode_pembayaran', 20);
             $table->string('status', 20);

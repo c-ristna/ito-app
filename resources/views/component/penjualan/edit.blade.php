@@ -35,10 +35,22 @@
               <input type="date" id="form-control" name="tanggal" value="{{ $penjualan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
-              <label class="form-label">List Produk</label>
-              <input type="text" id="form-control" name="list_produk" value="{{ $penjualan->list_produk }}" required="" placeholder="Ketik disini" />
+              <label for="list_produk">List Produk</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Puding" id="puding">
+                <label class="form-check-label" for="puding">Puding</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Keripik pisang" id="keripik_pisang">
+                <label class="form-check-label" for="keripik_pisang">Keripik Pisang</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="list_produk[]" value="Makaroni" id="makaroni">
+                <label class="form-check-label" for="makaroni">Makaroni</label>
+              </div>
+              <!-- Add more options as needed -->
             </div>
-            <div>
+              <div>
               <label class="form-label">Total Harga</label>
               <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->total_harga }}" required="" placeholder="Ketik disini" />
             </div>

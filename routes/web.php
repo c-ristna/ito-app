@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\ProdukController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 
+use App\Models\Konsumen;
+use App\Models\Admin;
+use App\Models\Keuangan;
+use App\Models\Penjualan;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +27,41 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //Menampilkan jumlah data yang terhubung dengan tabel-tabel
+    $total_konsumen = Konsumen::count();
+    $total_penjualan = Penjualan::count();
+    $total_admin = Admin::count();
+    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
+
+    //Menampilkan Customer Terbaru
+    $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
+
+    //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
+    $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
+    
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
 });
 
 Route::get('dashboard', function () {
-    return view ('dashboard');
+    //Menampilkan jumlah data yang terhubung dengan tabel-tabel
+    $total_konsumen = Konsumen::count();
+    $total_penjualan = Penjualan::count();
+    $total_admin = Admin::count();
+    // $jumlahPendapatan = Keuangan::sum('jumlahPendapatan');
+
+    //Menampilkan Customer Terbaru
+    $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
+
+    //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
+    $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
+    
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'konsumen', 'penjualan'));
 });
+
 // Route::get('home', function () {
 //     return view ('home');
 // });
+
 Route::resource('/login', LoginController::class);
 Route::resource('/logout', LoginController::class);
 

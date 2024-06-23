@@ -52,8 +52,19 @@
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $item->kode_penjualan }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
-                            <td>{{ $item->list_produk }}</td>
-                            <td>{{ formatRupiah(floatval($item->total_harga)) }}</td>
+                            <td>
+                            @php
+                                    $produkList = json_decode($item->list_produk, true);
+                                @endphp
+                                @if(is_array($produkList))
+                                    @foreach($produkList as $produk)
+                                        {{ str_replace('\\', '', $produk) }}<br>
+                                    @endforeach
+                                @else
+                                    {{ str_replace(['[', ']', '"', '\\'], '', $item->list_produk) }}
+                                @endif
+                            </td>
+                            <td>{{ $item->total_harga }}</td>
                             <td>{{ $item->metode_pembayaran }}</td>
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->nama_konsumen }}</td>
@@ -64,7 +75,7 @@
                                 <form action="{{ url('penjualan/' . $item->id) }}" method="POST" class="d-inline">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger fas fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"></button>
                                 </form>
                             </td>
                         </tr>

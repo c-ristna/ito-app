@@ -5,10 +5,11 @@
         </div>
 
         <div class="search">
-            <label>
-                <input type="text" placeholder="Cari di sini" aria-label="Cari">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
+            <form action="{{ url('konsumen') }}" method="GET">
+                <input type="search" name="search" value="{{ isset($keyword) ? $keyword : '' }}"
+                    placeholder="Cari Data">
+                <button type="submit">Cari</button>
+            </form>
         </div>
 
         <div class="user">

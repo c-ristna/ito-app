@@ -36,14 +36,20 @@
                             placeholder="Ketik disini" />
                     </div>
                     <div>
-                        <label class="form-label">List Produk</label>
-                        <select name="list_produk" class="form-control" required>
-                            <option value="">Pilih Produk</option>
-                            <option value="Puding">Puding</option>
-                            <option value="Keripik pisang">Keripik Pisang</option>
-                            <option value="Makaroni">Makaroni</option>
-                            <!-- Add more options as needed -->
-                          </select>
+                        <label for="list_produk">List Produk</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="list_produk[]" value="Puding" id="puding">
+                            <label class="form-check-label" for="puding">Puding</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="list_produk[]" value="Keripik pisang" id="keripik_pisang">
+                            <label class="form-check-label" for="keripik_pisang">Keripik Pisang</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="list_produk[]" value="Makaroni" id="makaroni">
+                            <label class="form-check-label" for="makaroni">Makaroni</label>
+                        </div>
+                        <!-- Add more options as needed -->
                     </div>
                     <div>
                         <label class="form-label">Total Harga</label>
@@ -65,7 +71,6 @@
                             <option value="">Pilih Status Penjualan</option>
                             <option value="Terkirim">Terkirim</option>
                             <option value="Tertunda">Tertunda</option>
-                            <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div>

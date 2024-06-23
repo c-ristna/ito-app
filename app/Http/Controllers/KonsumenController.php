@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Hash;
 
 class KonsumenController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-      $konsumen = Konsumen::all();
-      return view('component/konsumen/dataKonsumen', compact('konsumen'));
+    $keyword = $request->get('search');
+    \Log::info('Search keyword: ' . $keyword);
+    $konsumen = Konsumen::when($keyword, function ($query, $keyword) {
+      return $query->where('nama_konsumen', 'LIKE', "%{$keyword}%");
+    })->get();
+
+    return view('component/konsumen/dataKonsumen', compact('konsumen', 'keyword'));
   }
   public function create()
   {
