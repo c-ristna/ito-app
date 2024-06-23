@@ -45,21 +45,23 @@
                             <th scope="col">Pemasukan</th>
                             <th scope="col">Pengeluaran</th>
                             <th scope="col">Saldo</th>
-                            <!-- <th scope="col">Total Semua Saldo</th> -->
                             <th colspan="2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php $total_saldo = 0; @endphp
                         @foreach ($keuangan as $key => $item)
-                            @php $total_saldo = floatval($item->pemasukan) - floatval($item->pengeluaran); @endphp
+                            @php
+                                $saldo = floatval($item->pemasukan) - floatval($item->pengeluaran);
+                                $total_saldo += $saldo;
+                            @endphp
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
                                 <td>{{ $item->kode_keuangan }}</td>
                                 <td>{{ formatRupiah(floatval($item->pemasukan)) }}</td>
                                 <td>{{ formatRupiah(floatval($item->pengeluaran)) }}</td>
-                                <td>{{ formatRupiah(floatval($item->pemasukan) - floatval($item->pengeluaran)) }}</td>
+                                <td>{{ formatRupiah($saldo) }}</td>
                             
                                 <td class="button-container">
                                     <button class="btn btn-primary fa-solid fa-pen-to-square" onclick="window.location.href='{{ url('keuangan/' . $item->id . '/edit') }}'"></button>
@@ -74,9 +76,10 @@
                             </tr>
                         @endforeach
                         <tr>
-                            <td colspan="6" style="text-align: right;"><strong>Total Keseluruhan Saldo:</strong></td>
-                            <td><strong>{{ formatRupiah($total_saldo += $total_saldo) }}</strong></td>
-                            <td colspan="2"></td>
+                            <td colspan="5" style="text-align: right;"><strong>Total Keseluruhan Saldo:</strong></td>
+                            <td colspan="3">
+                                <strong>{{ formatRupiah($total_saldo) }}</strong>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
