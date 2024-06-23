@@ -16,7 +16,7 @@ class KeuanganController extends Controller
             ->join('penjualans', 'keuangans.penjualans_id', '=', 'penjualans.id')
             ->select('keuangans.*', 'penjualans.total_harga')
             ->oldest()
-            ->paginate(5);
+            ->paginate();
         return view('component/keuangan/dataKeuangan')->with('keuangan', $keuangan);
     }
     public function create() // Display form to add new keuangan data
@@ -54,6 +54,12 @@ class KeuanganController extends Controller
     
     public function store(Request $request) //buat simpan data
     {
+        // Memastikan bahwa penjualans_id ada di database sebelum menciptakan data keuangan
+        $penjualan = Penjualan::find($request->penjualans_id);
+        if (!$penjualan) {
+            return redirect('keuangan/create')->withErrors(['penjualans_id' => 'ID Penjualan tidak valid.']);
+        }
+
         Keuangan::create([
             'tanggal'            => $request->tanggal,
             'kode_keuangan'      => $request->kode_keuangan,
@@ -62,7 +68,7 @@ class KeuanganController extends Controller
             'saldo'              => $request->saldo,
             'penjualans_id'      => $request->penjualans_id,
         ]);
-        return redirect('keuangan')->with('status');
+        return redirect('keuangan')->with('status', 'Data keuangan berhasil disimpan.');
     }
 
     public function destroy($id, Request $request)

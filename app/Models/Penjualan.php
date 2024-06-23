@@ -11,13 +11,13 @@ class Penjualan extends Model
 {
     use HasFactory;
     use HasFormatRupiah;
-    protected $table = 'penjualans';
+    public $table = 'penjualans';
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     protected $auditTimestamps = true;
 
-    protected $fillable = [
+    public $fillable = [
         'kode_penjualan',
         'tanggal',
         'list_produk',

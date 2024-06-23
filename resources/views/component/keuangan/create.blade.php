@@ -39,14 +39,6 @@
                         <label class="form-label">Pemasukan</label>
                         <input type="text" id="form-control" name="pemasukan" required="" placeholder="Ketik disini" />
                     </div>
-                    <!-- <div>
-                        <label class="form-label">Pemasukan</label>
-                        <select class="form-control" name="pemasukan" required="">
-                            @foreach ($penjualans as $penjualan)
-                                <option value="{{ $penjualan->total_harga }}">{{ formatRupiah($penjualan->total_harga) }}</option>
-                            @endforeach
-                        </select>
-                    </div> -->
                     <div>
                         <label class="form-label">Pengeluaran</label>
                         <input type="text" id="form-control" name="pengeluaran" required="" placeholder="Ketik disini" />

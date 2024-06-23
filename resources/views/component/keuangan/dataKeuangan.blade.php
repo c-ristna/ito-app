@@ -50,7 +50,7 @@
                     </thead>
                     <tbody>
                         @php $total_saldo = 0; @endphp
-                        @foreach ($keuangan as $key => $item)
+                        @foreach ($keuangan->take(100) as $key => $item)
                             @php
                                 $saldo = floatval($item->pemasukan) + floatval($item->total_harga) - floatval($item->pengeluaran);
                                 $total_saldo += $saldo;
