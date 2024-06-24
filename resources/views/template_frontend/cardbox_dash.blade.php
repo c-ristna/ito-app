@@ -32,7 +32,7 @@
     <div class="card">
         <div>
             <div class="numbers">{{ formatRupiah($totalKeseluruhan) }}</div>
-            <div class="cardName">Total Pendapatan per Bulan</div>
+            <div class="cardName">Total Pendapatan Keseluruhan</div>
         </div>
         <div class="iconBx">
             <ion-icon name="cash-outline"></ion-icon>
