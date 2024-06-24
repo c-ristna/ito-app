@@ -21,7 +21,7 @@
     <body>
         <div class="tambah-data">
             <h1>Tambah Data Keuangan</h1>
-        <form method="POST" action="{{ url('keuangan') }}" enctype="multipart/form">
+        <form method="POST" action="{{ url('keuangan') }}" enctype="multipart/form-data">
             @csrf
             <section class="base">
                 <div class="form"></div>
@@ -49,7 +49,12 @@
                     </div>
                     <div>
                         <label class="form-label">Penjualan ID</label>
-                        <input type="number" class="form-control" name="penjualans_id" required="" placeholder="Ketik disini" /> 
+                        <select name="penjualans_id" class="form-control" required>
+                            <option value="">Pilih Kode Penjualan</option>
+                            @foreach($penjualans as $penjualan)
+                                <option value="{{ $penjualan->id }}">{{ $penjualan->kode_penjualan }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="button-container">
                         <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>

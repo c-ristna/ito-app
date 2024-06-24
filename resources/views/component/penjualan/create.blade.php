@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label for="metode_pembayaran">Metode Pembayaran</label>
-                        <select name="metode_pembayaran" id="metode_pembayaran" required>
+                        <select name="metode_pembayaran" id="metode_pembayaran"  class="form-control" required>
                             <option value="">Pilih Metode Pembayaran</option>
                             <option value="Cash" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Cash' ? 'selected' : '' }}>Cash</option>
                             <option value="Dana" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Dana' ? 'selected' : '' }}>Dana</option>
@@ -75,8 +75,13 @@
                         </select>
                     </div>
                     <div>
-                        <label class="form-label">Konsumen ID</label>
-                        <input type="number" class="form-control" name="konsumens_id" required="" placeholder="Ketik disini" /> 
+                        <label class="form-label">Nama Konsumen</label>
+                        <select name="konsumens_id" class="form-control" required>
+                            <option value="">Pilih Konsumen</option>
+                            @foreach($konsumens as $konsumen)
+                                <option value="{{ $konsumen->id }}">{{ $konsumen->nama_konsumen }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="button-container">
                         <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>

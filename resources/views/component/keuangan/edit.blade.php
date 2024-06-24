@@ -47,8 +47,13 @@
               <input type="text" id="form-control" name="saldo" value="{{ $keuangan->pemasukan - $keuangan->pengeluaran }}" required="" placeholder="Ketik disini" readonly />
             </div>
             <div>
-            <label class="form-label">Penjualans ID</label>
-              <input type="number" id="form-control" name="penjualans_id" value="{{ $keuangan->penjualans_id }}" required=""/> <br>
+              <label class="form-label">Penjualan ID</label>
+              <select name="penjualans_id" class="form-control" required>
+                <option value="">Pilih Kode Penjualan</option>
+                @foreach($penjualans as $penjualan)
+                  <option value="{{ $penjualan->id }}" {{ $keuangan->penjualans_id == $penjualan->id ? 'selected' : '' }}>{{ $penjualan->kode_penjualan }}</option>
+                @endforeach
+              </select>
             </div>
             <div class="button-container">
               <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>

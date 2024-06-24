@@ -31,7 +31,7 @@
 
     <div class="card">
         <div>
-            <div class="numbers">{{ formatRupiah($total_saldo) }}</div>
+            <div class="numbers">{{ formatRupiah($totalKeseluruhan) }}</div>
             <div class="cardName">Total Pendapatan per Bulan</div>
         </div>
         <div class="iconBx">

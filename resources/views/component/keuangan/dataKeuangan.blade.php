@@ -52,14 +52,17 @@
                         @php $total_saldo = 0; @endphp
                         @foreach ($keuangan->take(100) as $key => $item)
                             @php
-                                $saldo = floatval($item->pemasukan) + floatval($item->total_harga) - floatval($item->pengeluaran);
+                                $penjualan = \App\Models\Penjualan::find($item->penjualans_id);
+                                $total_harga = $penjualan ? floatval($penjualan->total_harga) : 0;
+                                $saldo = floatval($item->pemasukan) + $total_harga - floatval($item->pengeluaran);
                                 $total_saldo += $saldo;
                             @endphp
                             <tr>
+                                <!-- no di ambil dari id sini -->
                                 <th scope="row">{{ ++$key }}</th>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
                                 <td>{{ $item->kode_keuangan }}</td>
-                                <td>{{ formatRupiah(floatval($item->pemasukan) + floatval($item->total_harga)) }}</td>
+                                <td>{{ formatRupiah(floatval($item->pemasukan) + $total_harga) }}</td>
                                 <td>{{ formatRupiah(floatval($item->pengeluaran)) }}</td>
                                 <td>{{ formatRupiah($saldo) }}</td>
                                 <td class="button-container">

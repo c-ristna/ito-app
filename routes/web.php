@@ -32,17 +32,15 @@ Route::get('/', function () {
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
     $penjualan = Penjualan::whereDate('created_at', now()->format('Y-m-d'))->get();
-    $total_saldo = 0;
-    foreach ($penjualan as $item) {
-        $total_saldo += $item->total_harga;
-    }
+    $total_saldo = $penjualan->sum('total_harga');
+    $totalKeseluruhan = Penjualan::sum('total_harga');
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'totalKeseluruhan', 'konsumen', 'penjualan'));
 });
 
 Route::get('dashboard', function () {
@@ -51,17 +49,14 @@ Route::get('dashboard', function () {
     $total_penjualan = Penjualan::count();
     $total_admin = Admin::count();
     $penjualan = Penjualan::whereDate('created_at', now()->format('Y-m-d'))->get();
-    $total_saldo = 0;
-    foreach ($penjualan as $item) {
-        $total_saldo += $item->total_harga;
-    }
+    $totalKeseluruhan = Penjualan::sum('total_harga');
     //Menampilkan Customer Terbaru
     $konsumen = Konsumen::orderBy('created_at', 'desc')->take(7)->get();
 
     //Menampilkan Pesanan Terkini yang terhubung dengan tabel penjualan
     $penjualan = Penjualan::orderBy('created_at', 'desc')->take(7)->get();
     
-    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'total_saldo', 'konsumen', 'penjualan'));
+    return view('dashboard', compact('total_konsumen', 'total_penjualan', 'total_admin', 'totalKeseluruhan', 'konsumen', 'penjualan'));
 });
 
 // Route::get('home', function () {

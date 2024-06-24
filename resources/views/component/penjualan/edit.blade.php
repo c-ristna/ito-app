@@ -32,7 +32,7 @@
             </div>
             <div>
               <label class="form-label">Tanggal</label>
-              <input type="date" id="form-control" name="tanggal" value="{{ $penjualan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" readonly/>
+              <input type="date" id="form-control" name="tanggal" value="{{ $penjualan->tanggal }}" autofocus="" required="" placeholder="Ketik disini" />
             </div>
             <div>
               <label class="form-label">List Produk</label>
@@ -51,17 +51,17 @@
             </div>
               <div>
               <label class="form-label">Total Harga</label>
-              <input type="decimal" id="form-control" name="total_harga" value="{{ $penjualan->pemasukan }}" required="" placeholder="Ketik disini" />
+              <input type="number" class="form-control" name="total_harga" value="{{ $penjualan->pemasukan }}" required="" placeholder="Ketik disini" />
             </div>
             <div class="form-group">
-                        <label for="metode_pembayaran">Metode Pembayaran</label>
-                        <select name="metode_pembayaran" id="metode_pembayaran" required>
-                            <option value="">Pilih Metode Pembayaran</option>
-                            <option value="Cash" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Cash' ? 'selected' : '' }}>Cash</option>
-                            <option value="Dana" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Dana' ? 'selected' : '' }}>Dana</option>
-                            <option value="Bank" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Bank' ? 'selected' : '' }}>Bank</option>
-                            <!-- Add more options as needed -->
-                        </select>
+                <label for="metode_pembayaran">Metode Pembayaran</label>
+                <select name="metode_pembayaran" id="metode_pembayaran" class="form-control" required>
+                    <option value="">Pilih Metode Pembayaran</option>
+                    <option value="Cash" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Cash' ? 'selected' : '' }}>Cash</option>
+                    <option value="Dana" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Dana' ? 'selected' : '' }}>Dana</option>
+                    <option value="Bank" {{ isset($penjualan) && $penjualan->metode_pembayaran == 'Bank' ? 'selected' : '' }}>Bank</option>
+                    <!-- Add more options as needed -->
+                </select>
             </div>
             <div class="form-group">
                         <label for="status">Status</label>
@@ -75,13 +75,18 @@
                     </div>
             </div>
             <div>
-            <label class="form-label">Konsumens ID</label>
-              <input type="number" id="form-control" name="konsumens_id" value="{{ $penjualan->konsumens_id }}" required="" /> <br>
+              <label class="form-label">Nama Konsumen</label>
+              <select name="konsumens_id" class="form-control" required>
+                <option value="">Pilih Konsumen</option>
+                @foreach($konsumens as $konsumen)
+                  <option value="{{ $konsumen->id }}" {{ $penjualan->konsumens_id == $konsumen->id ? 'selected' : '' }}>{{ $konsumen->nama_konsumen }}</option>
+                @endforeach
+              </select>
             </div>
             <div class="button-container">
-                            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
-                            <button type="submit" class="btn btn-success" onclick="return confirm('Apakah Anda yakin ingin menyimpan perubahan?');">Simpan</button>
-                        </div>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back();">Kembali</button>
+                <button type="submit" class="btn btn-success" onclick="return confirm('Apakah Anda yakin ingin menyimpan perubahan?');">Simpan</button>
+            </div>
           </div>
         </section>
       </form>
